@@ -4,6 +4,10 @@ RT-Preempt Patch是在Linux社区kernel的基础上，加上相关的补丁，�
 
 ## 下载内核及rt补丁
 
+> [!Note]
+>
+>本文下载的内核是linux-5.6.19.tar.gz，rt补丁是patch-5.6.19-rt12.patch.gz。
+
 1. 新建文件夹，用于存放内核及补丁
 
 ```bash
@@ -14,16 +18,9 @@ mkdir ~/rt-kernel && cd ~/rt-kernel
 >
 >使用外网访问，若无外网则使用手机热点访问。
 
-2. 下载 [rt补丁](https://mirrors.edge.kernel.org/pub/linux/kernel/projects/rt/)
+2. 下载[rt补丁](https://mirrors.edge.kernel.org/pub/linux/kernel/projects/rt/)
 
 3. 下载[内核源码](https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/)
-
-> [!Note]
->
->本文下载的内核是linux-5.6.19.tar.gz，rt补丁是patch-5.6.19-rt12.patch.gz。
-
-
-      
 
 > [!Warning]
 >
