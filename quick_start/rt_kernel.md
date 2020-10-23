@@ -1,4 +1,3 @@
-[TOC]
 # 简介
 RT-Preempt Patch是在Linux社区kernel的基础上，加上相关的补丁，以使得Linux满足硬实时的需求。下面是编译配置RT linux内核的流程，以内核5.6.19为例。
 # 下载内核及rt补丁
@@ -6,7 +5,7 @@ RT-Preempt Patch是在Linux社区kernel的基础上，加上相关的补丁，�
 ```bash
 mkdir ~/rt-kernel && cd ~/rt-kernel
 ```
-> [!Tip]
+<!-- > [!Tip]
 >
 >使用外网访问，若无外网则使用手机热点访问。
 2. 下载 [rt补丁](https://mirrors.edge.kernel.org/pub/linux/kernel/projects/rt/)
@@ -18,7 +17,7 @@ mkdir ~/rt-kernel && cd ~/rt-kernel
 > [!Warning]
 >
 >内核版本与补丁版本需要严格对应。
-
+ -->
 
 
 ### 在仿真环境中测试
