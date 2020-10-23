@@ -13,4 +13,4 @@
 * Introduction Doc
   * [Ballistic_Model](en/digging_deeper/ballistic_model.md)
   * [IMU PTZ control](en/digging_deeper/imu_ptz_model.md)
-  * [装甲板卡尔曼滤波](en/digging_deeper/armor_kalman_filter.md)
+  * [Armor Kalman filter](en/digging_deeper/armor_kalman_filter.md)
