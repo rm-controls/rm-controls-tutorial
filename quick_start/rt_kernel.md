@@ -30,6 +30,7 @@ gunzip patch-5.6.19-rt12.patch.gz #解压补丁
 cd linux-5.6.19/
 patch -p1 < ../patch-5.6.19-rt12.patch #打补丁
 ```
+
 > [!Note]
 >
 >本文使用的内核是linux-5.6.19.tar.gz，rt补丁是patch-5.6.19-rt12.patch.gz。
