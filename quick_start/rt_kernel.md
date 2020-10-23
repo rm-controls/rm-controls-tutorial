@@ -20,7 +20,7 @@ mkdir ~/rt-kernel && cd ~/rt-kernel
 >
 >本文下载的内核是linux-5.6.19.tar.gz，rt补丁是patch-5.6.19-rt12.patch.gz。
 
-testtest
+testtestlallalalalal啦啦啦啦啦
 
 > [!Warning]
 >
@@ -115,7 +115,7 @@ uname -a
     ```bash
     sudo apt-get install flex
     ```
-    
+
 2. 内核自动安装失败，gurb中没有新内核
     ```bash
     sudo mkinitramfs -k -o initrd.img-4.9.65-rt 4.9.65-rt56
