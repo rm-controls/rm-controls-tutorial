@@ -23,6 +23,7 @@ mkdir ~/rt-kernel && cd ~/rt-kernel
 >本文下载的内核是linux-5.6.19.tar.gz，rt补丁是patch-5.6.19-rt12.patch.gz。
 
 
+      
 
 > [!Warning]
 >
