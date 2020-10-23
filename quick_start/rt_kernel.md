@@ -11,8 +11,11 @@ mkdir ~/rt-kernel && cd ~/rt-kernel
 > [!Tip]
 >
 >使用外网访问，若无外网则使用手机热点访问。
+
 2. 下载 [rt补丁](https://mirrors.edge.kernel.org/pub/linux/kernel/projects/rt/)
+
 3. 下载[内核源码](https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/)
+
 > [!Note]
 >
 >本文下载的内核是linux-5.6.19.tar.gz，rt补丁是patch-5.6.19-rt12.patch.gz。
@@ -38,16 +41,23 @@ patch -p1 < ../patch-5.6.19-rt12.patch #打补丁
 ```bash
 make menuconfig
 ```
+
 2. 选General setup，如果内核版本老一点没有下一步中的选项的话选Processor Type and features
 ![图1](https://ftp.bmp.ovh/imgs/2020/10/489e6a9ff0a684f1.png)
+
 3. 选Preemption Model (Voluntary Kernel Preemption (Desktop))
+
 ![图2](https://ftp.bmp.ovh/imgs/2020/10/1b18aa2359246159.png)
+
 4. 选Fully Preemptible Kernel (RT)，然后一直按esc键返回至主页面
 ![图3](https://ftp.bmp.ovh/imgs/2020/10/66924a6b92b55753.png)
+
 5. 选Kernel hacking
 ![图4](https://ftp.bmp.ovh/imgs/2020/10/e1c825922419dbb8.png)
+
 6. 选Memory Debugging
 ![图5](https://ftp.bmp.ovh/imgs/2020/10/4b59c4383bb00e15.png)
+
 7. 取消选择Check for stack overflows，本来就没有选择可以忽略
 
 ## 内核编译
@@ -60,15 +70,18 @@ make -je#根据处理器决定编译线程数
 sudo make modules_install -j8
 sudo make install -j8
 ```
+
 2. 更新grub并重启
 ```bash
 sudo update-grub
 sudo reboot
 ```
+
 3. 查看内核版本
 ```bash
 uname -a
 ```
+
 此时可以看到内核版本中有'PREEMPT RT'标识
 
 ## 错误合集
@@ -102,6 +115,7 @@ uname -a
     ```bash
     sudo apt-get install flex
     ```
+    
 2. 内核自动安装失败，gurb中没有新内核
     ```bash
     sudo mkinitramfs -k -o initrd.img-4.9.65-rt 4.9.65-rt56
