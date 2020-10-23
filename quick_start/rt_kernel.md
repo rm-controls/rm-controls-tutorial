@@ -13,13 +13,13 @@ mkdir ~/rt-kernel && cd ~/rt-kernel
 > [!Note]
 >
 >本文下载的内核是linux-5.6.19.tar.gz，rt补丁是patch-5.6.19-rt12.patch.gz。
-test
+
+
 > [!Warning]
 >
 >内核版本与补丁版本需要严格对应。
 
 
-### 在仿真环境中测试
 4. 打补丁
 ```bash
 sudo apt-get install libncurses-dev #安装依赖项
