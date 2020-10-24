@@ -1,6 +1,8 @@
 # 硬件规格
 根据视觉识别要求, 我们提供了三套主控解决方案:
 
+[![硬件方案](https://s1.ax1x.com/2020/10/24/BVWKXR.png)](https://imgchr.com/i/BVWKXR)
+
 1. Jetson 系列: 深度学习视觉算法
    * 内置CAN
    * 内置GPIO
