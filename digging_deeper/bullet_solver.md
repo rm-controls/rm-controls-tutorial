@@ -20,30 +20,30 @@
 <br/>
 - 算法框图：
 
-[![BE2uFg.png](https://s1.ax1x.com/2020/10/24/BE2uFg.png)]()
+![BE2uFg.png](https://s1.ax1x.com/2020/10/24/BE2uFg.png)
 
 # 模型推导
 空气阻力与速度成正比，目标点以恒定速度运动
 **2D子弹运动模型**：在xz平面内，假设以子弹子弹发射点为坐标原点，则子弹的实际位置相当于在xoz平面内的一个矢量。
-[![BEgFbT.png](https://s1.ax1x.com/2020/10/23/BEgFbT.png)]()
+![BEgFbT.png](https://s1.ax1x.com/2020/10/23/BEgFbT.png)
 用表示子弹位置矢量在X方向上的分量，$\vec{v_x}、\vec{v_z}$分别表示子弹速度在x轴、z轴的分量，用$\vec{z}$表示子弹位置矢量在z方向上的分量；$v_0$表示子弹发射初速度， k为空气阻力系数，g为重力加速度，m表示子弹重量，$f_x$表示子弹所受空气阻力在X方向上的分量，根据物理知识知：
 $$\vec{f_x}=-k\vec{v_x}=m\frac{d\vec{v_x}}{dt}\tag{1}$$
 将(1)式整理得到：
 $$-\frac kmdt=\frac{d\vec{v_x}}{v_x}$$
 以子弹发射的时刻为0时刻,发射初速度在 x 方向上的分量为$\vec{v_x}$，对上式积分：
-$$\int_0^t-\frac kmdt=\int_{v_{x0}}^{v_x}\frac{dv_x}{v_x}\tag{2}$$
-由(2)式求解得到：$$v_x=\frac{dx}{dt}=v_{x0}e^{-\frac kmt}$$对上式两边积分可得：
-$$x=\frac mk v_{x0}(1-e^{-\frac kmt})\tag{3}$$
+$$\int_0^t-\frac kmdt=\int_{v_{x_0}}^{v_x}\frac{dv_x}{v_x}\tag{2}$$
+由(2)式求解得到：$$v_x=\frac{dx}{dt}=v_{x_0}e^{-\frac kmt}$$对上式两边积分可得：
+$$x=\frac mk v_{x_0}(1-e^{-\frac kmt})\tag{3}$$
 同时，可求子弹在z轴方向上受到的阻力为：
 $$\vec{f_z}=-k\vec{v_z}-mg=m\frac{d\vec{v_z}}{dt}$$
 整理得到微分方程：
 $$\frac{dv_z}{dt}+\frac kmv_z+g=0\tag{4}$$
 解得：
-$$z=\frac km\left(v_{z0}+\frac{mg}k\right)\left(1-e^{-\frac kmt}\right)-\frac{mg}kt\tag{5}$$
-目标点运动模型：设目标点的起始位置为$\left(x_{t0} , z_{t0}\right)$，目标点在 x 轴方向上的速度为$v_{tx}$，在 z 轴方向上的速度为$v_{tz}$，目标点实际位置在 x 轴方向的分量为$x_t$，在 z 轴方向的分量为$z_t$。跟据匀速直线运动的公式可得：
-$$x_t=x_{t0}+v_{tx}t\\z_t=z_{t0}+v_{tz}t$$   
+$$z=\frac km\left(v_{z_0}+\frac{mg}k\right)\left(1-e^{-\frac kmt}\right)-\frac{mg}kt\tag{5}$$
+目标点运动模型：设目标点的起始位置为$\left(x_{t_0} , z_{t_0}\right)$，目标点在 x 轴方向上的速度为$v_{tx}$，在 z 轴方向上的速度为$v_{tz}$，目标点实际位置在 x 轴方向的分量为$x_t$，在 z 轴方向的分量为$z_t$。跟据匀速直线运动的公式可得：
+$$x_t=x_{t_0}+v_{tx}t\\z_t=z_{t_0}+v_{tz}t$$   
 基于上述2D模型的推导，可以得到**3D模型**下子弹和目标点在Y方向的运动模型：
-$$ Y = \frac mkv_{y0}(1-e^{-\frac kmt})$$  $$ y_t = y_{t0} + v_{ty}t$$
+$$ Y = \frac mkv_{y_0}(1-e^{-\frac kmt})$$  $$ y_t = y_{t_0} + v_{ty}t$$
 
 # 代码实现 
 ## 1、定义基类
