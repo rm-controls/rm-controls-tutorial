@@ -1,5 +1,6 @@
 # Introduction
 We need to make a bullet angle solver.
+
 Purpose:
 - Consider air resistance (proportional to speed)
 - Consider target speed
