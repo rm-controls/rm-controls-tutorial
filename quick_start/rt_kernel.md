@@ -5,48 +5,46 @@ RT-Preempt Patch是在Linux社区kernel的基础上，加上相关的补丁，�
 ## 下载内核及rt补丁
 
 1. 新建文件夹，用于存放内核及补丁
+    ```bash
+    mkdir ~/rt-kernel && cd ~/rt-kernel
+    ```
 
-```bash
-mkdir ~/rt-kernel && cd ~/rt-kernel
-```
-
-> [!Tip]
->
->使用外网访问，若无外网则使用手机热点访问。
+    > [!Tip]
+    >
+    >使用外网访问，若无外网则使用手机热点访问。
 
 2. 下载[rt补丁](https://mirrors.edge.kernel.org/pub/linux/kernel/projects/rt/)
 
 3. 下载[内核源码](https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/)
 
-> [!Warning]
->
->内核版本与补丁版本需要严格对应。
+    > [!Warning]
+    >
+    >内核版本与补丁版本需要严格对应。
 
 4. 打补丁
-```bash
-sudo apt-get install libncurses-dev #安装依赖项
-tar -xzvf linux-5.6.19.tar.gz #解压内核
-gunzip patch-5.6.19-rt12.patch.gz #解压补丁
-cd linux-5.6.19/
-patch -p1 < ../patch-5.6.19-rt12.patch #打补丁
-```
+    ```bash
+    sudo apt-get install libncurses-dev #安装依赖项
+    tar -xzvf linux-5.6.19.tar.gz #解压内核
+    gunzip patch-5.6.19-rt12.patch.gz #解压补丁
+    cd linux-5.6.19/
+    patch -p1 < ../patch-5.6.19-rt12.patch #打补丁
+    ```
 
-> [!Note]
->
->本文使用的内核是linux-5.6.19.tar.gz，rt补丁是patch-5.6.19-rt12.patch.gz。
+    > [!Note]
+    >
+    >本文使用的内核是linux-5.6.19.tar.gz，rt补丁是patch-5.6.19-rt12.patch.gz。
 
 ## 配置内核
 
 1. 打开内核配置界面
-```bash
-make menuconfig
-```
+    ```bash
+    make menuconfig
+    ```
 
 2. 选General setup，如果内核版本老一点没有下一步中的选项的话选Processor Type and features
 ![图1](https://ftp.bmp.ovh/imgs/2020/10/489e6a9ff0a684f1.png)
 
 3. 选Preemption Model (Voluntary Kernel Preemption (Desktop))
-
 ![图2](https://ftp.bmp.ovh/imgs/2020/10/1b18aa2359246159.png)
 
 4. 选Fully Preemptible Kernel (RT)，然后一直按esc键返回至主页面
@@ -63,30 +61,46 @@ make menuconfig
 ## 内核编译
 
 1. 编译并安装内核
-```bash
-make -je#根据处理器决定编译线程数
-#使用命令“nproc”查看线程数
-#如cpu为4线程，则make -j4
-sudo make modules_install -j8
-sudo make install -j8
-```
+    ```bash
+    CONFIG_DEBUG_INFO=n #阻止编译产debug文件
+    make -j`nproc` && make -j`nproc` bindeb-pk #编译并打包
+    #'nproc'为cpu线程数，使用nproc命令可查看
+    #如cpu为4线程，则make -j'nproc'=make -j4
+    ```
+
+    然后你将获得
+    ```bash
+    linux-firmware-image-5.6.19-rt12_5.6.19-rt12-1_amd64.deb
+    linux-headers-5.6.19-rt12_5.6.19-rt12-1_amd64.deb
+    linux-image-5.6.19-rt12_5.6.19-rt12-1_amd64.deb
+    linux-libc-dev_5.6.19-rt12-1_amd64.deb
+    ```
+    > [!Tip]
+    >
+    >此时可用U盘拷贝.deb包至其他设备进行安装，且无需再次编译
+
+    进入软件包的文件夹并安装内核
+    ```bash
+    sudo dpkg -i linux-*.deb
+    ```
 
 2. 更新grub并重启
-```bash
-sudo update-grub
-sudo reboot
-```
+    ```bash
+    sudo update-grub
+    sudo reboot
+    ```
 
 3. 查看内核版本
-```bash
-uname -a
-```
-
-此时可以看到内核版本中有'PREEMPT RT'标识
+    ```bash
+    uname -a
+    ```
+    
+    此时可以看到内核版本中有'PREEMPT RT'标识
 
 ## 错误合集
 
 1. 无法打开内核配置界面menuconfig
+
     Q1:（linux-4.17.2内核为例）
     ```bash
     root@simon-virtual-machine:/home/simon/Src/linux-4.17.2# make menuconfig
@@ -115,10 +129,3 @@ uname -a
     ```bash
     sudo apt-get install flex
     ```
-
-2. 内核自动安装失败，gurb中没有新内核
-    ```bash
-    sudo mkinitramfs -k -o initrd.img-4.9.65-rt 4.9.65-rt56
-    ```
-    手动修改 /boot/grub/grub.cfg 配置启动项，如下图所示
-    ![图6](https://ftp.bmp.ovh/imgs/2020/10/dfe1966801ccbc43.png)
