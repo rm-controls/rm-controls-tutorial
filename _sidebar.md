@@ -1,6 +1,6 @@
 
 * 概述
-  * [GDUT DynamicX](roborts.md)
+  * [RM Software](rm_software.md)
   * [硬件规格](hardware_specifications.md)
   * [软件框架](software_framework.md)
 * 快速入门
