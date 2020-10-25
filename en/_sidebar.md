@@ -1,6 +1,6 @@
 
 * Overview
-  * [RoboMaster 2019](en/rm_software.md)
+  * [RM software tutorials](en/rm_software.md)
   * [Hardware Specifications](en/hardware_specifications.md)
   * [Software Framework](en/software_framework.md)
 * Quick Start
@@ -11,6 +11,5 @@
   * [IDE config](en/dev_guide/ide_config.md)
   * [Code Style](en/dev_guide/code_style.md)
 * Introduction Doc
-  * [Ballistic_Model](en/digging_deeper/bullet_solver_.md)
-  * [IMU PTZ control](en/digging_deeper/imu_ptz_model.md)
-  * [Armor Kalman filter](en/digging_deeper/armor_kalman_filter.md)
+  * [SDK](en/digging_deeper/sdk_docs/architecture.md)
+  * [Theory](en/digging_deeper/theory/theory_lover.md)

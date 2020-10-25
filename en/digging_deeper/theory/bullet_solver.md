@@ -106,7 +106,7 @@ int main(int argc, char **argv) {
   Approx2DSolver<double> approx2d(0.1, 9.8, 0.01, 0.01, 3.);
   Iter3DSolver<double> iter3d(0.1, 9.8, 0.01, 0.0001, 3.);
   Approx3DSolver<double> approx3d(0.1, 9.8, 0.01, 0.0001, 3.);
-```
+  ```
   - Iter2DSolver: Iterative algorithm of 2D model
   - Approx2DSolver: Velocity superposition algorithm for 2D models
   - Iter3DSolver: Iterative algorithm of 3D model
@@ -128,7 +128,7 @@ Take the iterative algorithm of the 3D model as an example
   double vel_3d[3] = {0, 1, 0};
   iter3d.setBulletSpeed(bullet_speed);
   iter3d.setTarget(pos_3d, vel_3d);
-```
+  ```
   - Customized initial launch angle : angle_init
   - The calculated launch angle : angle_solved
   - Initial bullet launch speed : bullet_speed

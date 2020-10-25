@@ -1,4 +1,7 @@
-<h1 style="text-align:center">GDUT DynamicX RM -softwareh1>
+<h1 style="text-align:center">RM -software tutorials</h1>
+
+
+
 
 
 
