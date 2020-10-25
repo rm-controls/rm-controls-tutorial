@@ -15,7 +15,7 @@
   
 * Digging deeper
   
-  * [SDK](digging_deeper/sdk_docs/archiecture.md)
+  * [SDK](digging_deeper/sdk_docs/architecture.md)
   
   * [理论](digging_deeper/theory/theory_lover.md)
   
