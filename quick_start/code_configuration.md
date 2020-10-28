@@ -1,47 +1,32 @@
-# 一、代码编译
-## 编译
-+ 首先从github下载所有代码
+# 安装
+## 从Git上拉取
+首先从github下clone仓库代码
 
-  ```sudo git clone 
-  //主程序代码
-  git clone https://github.com/QiayuanLiao/RM-Software.git
-  //视觉部分代码
-  git clone https://github.com/QiayuanLiao/rm_detection.git
-  ```
+    git clone https://github.com/QiayuanLiao/RM-Software.git
 
-+ 把视觉部分代码拷贝到主程序workspace（主程序暂不包含视觉部分代码）
+> [!Tip]
+>
+>该仓库包含了一个catkin_workspace, 需要在 `.bashrc` 中添加。
 
-  ```
-  cp -r rm_detection/ RM-Software/rm_ws/src/
-  ```
+初始化子模块
 
-+ 编译代码
+    git submodule update --init --recursive 
 
-  ```
-  cd RM-Software/rm_ws/
-  catkin_make
-  ```
+> [!Note]
+>
+>相机驱动和视觉算法两个节点以submodule形式管理。
+
+## 依赖
+
+- [Robot Operating System (ROS)](http://wiki.ros.org) (middleware for robotics),
+- xxxxxx
+
+安装ROS后，通过。
+
+    sudo apt-get install ros-melodic-[依赖包名]
 
 
-+ 等待编译完成
-
-  ![](https://img-blog.csdnimg.cn/20201025114033296.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MDEwMDgy,size_16,color_FFFFFF,t_70#pic_center)
-
-## 常见问题
-
-+ 缺少依赖包
-
-  ![](https://img-blog.csdnimg.cn/20201025114021180.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MDEwMDgy,size_16,color_FFFFFF,t_70#pic_center)
-
-解决：
-
-```
-//下载相对应的依赖包
-sudo apt-get install ros-melodic-[依赖包名]
-//重新编译
-catkin_make
-```
-# 二、配置文件
+# 配置文件
 ## yaml文件
 
 ## launch文件
