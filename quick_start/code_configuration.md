@@ -1,14 +1,14 @@
 # Table of Contents
 
 * 1 [代码编译](#代码编译)
-  * 1.1 [变更日志](#变更日志)
+  * 1.1 [编译](#编译)
   * 1.2 [常见问题](#常见问题)
 * 2 [配置文件的修改](#配置文件的修改)
   * 2.1[.yaml文件的修改](#.yaml文件的修改)
   * 2.2[.launch文件的修改](#.launch文件的修改)
 # markdown-toc
-# 代码编译
-
+# 一、代码编译
+## 编译
 + 首先从github下载所有代码
 
   ```sudo git clone 
@@ -50,7 +50,7 @@ sudo apt-get install ros-melodic-[依赖包名]
 //重新编译
 catkin_make
 ```
-# 配置文件的修改
+# 二、配置文件的修改
 ## .yaml文件的修改
 
 ## .launch文件的修改
