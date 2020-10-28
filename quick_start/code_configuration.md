@@ -4,8 +4,8 @@
   * 1.1 [编译](#编译)
   * 1.2 [常见问题](#常见问题)
 * 2 [配置文件的修改](#配置文件的修改)
-  * 2.1[.yaml文件的修改](#.yaml文件的修改)
-  * 2.2[.launch文件的修改](#.launch文件的修改)
+  * 2.1[yaml文件的修改](#yaml文件的修改)
+  * 2.2[launch文件的修改](#launch文件的修改)
 # markdown-toc
 # 一、代码编译
 ## 编译
@@ -51,6 +51,6 @@ sudo apt-get install ros-melodic-[依赖包名]
 catkin_make
 ```
 # 二、配置文件的修改
-## .yaml文件的修改
+## yaml文件的修改
 
-## .launch文件的修改
+## launch文件的修改
