@@ -30,7 +30,7 @@
 
 # 配置文件
 ## yaml文件
-yaml文件所在目录：**```~/RM-Software-master/rm_ws/src/rm_bringup/config```**下的**```joint_param.yaml```**和**``standard.yaml``**
+yaml文件所在目录：```~/RM-Software-master/rm_ws/src/rm_bringup/config```下的```joint_param.yaml```和``standard.yaml``
 
 + standard.yaml的内容：
 
