@@ -85,6 +85,10 @@ sudo apt-get install make
    > [!Note]
    >
    > 远程调试依赖于GDBSERVER。通过GDBSERVER启动的程序将先等待远程调试的连接，连接成功后再启动进程。
+   
+   如果结果与下面相似，则说明gdbserver运行成功。
+   
+   ![Image](../img/ide_config/gdbserver.png)
 
 ### 本地配置
 

@@ -75,16 +75,20 @@ Suppose the name of the program you want to debug is 'Test', the server IP is 10
    sudo apt-get install gdbserver
    ```
 
-2. Run gdbserver for remote compilation.  
+2. Run gdbserver for remote compilation. 
 
    ```bash
    # gdbserver IP:PORT PROGRAM_NAME
-   gdbserver 10.10.100.10:8888 /usr/Test/test
+   gdbserver 10.10.100.10:8888 /usr/document/Test/cmake-build-debug/test
    ```
 
    > [!Note]
    >
    > Remote debugging depends on GDBSERVER. The program started by GDBSERVER will wait for the connection of remote debugging first, and then start the process after the connection is successful.
+   
+   If the results are similar to the following, the gdbserver runs successfully.
+   
+   ![Image](../../img/ide_config/gdbserver.png)
 
 ### Local configuration
 
