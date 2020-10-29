@@ -38,55 +38,15 @@
   # 加载环境变量
   source devel/setup.bash
   ```
-# 配置文件
+# 不同机器人上使用同一套```RM_BASE```指南
+在RM_BASE中，只需修改几个配置文件，便可实现对不同机器人的控制。
 ## yaml文件
-yaml文件所在目录：```~/RM-Software-master/rm_ws/src/rm_bringup/config```下的```joint_param.yaml```和``standard.yaml``
+yaml文件所在目录：```~/RM-Software-master/rm_ws/src/rm_bringup/config```下的```joint_param.yaml```和```standard.yaml```
 
-+ standard.yaml的内容：
-
-```yaml
-joint:
-  [
-  {name: "wheel_rf", bus: "can0", id: 0x201,
-   type: "3508", ctrl: "speed" ,dir: false},
-  {name: "wheel_lf", bus: "can0", id: 0x202,
-   type: "3508", ctrl: "speed" ,dir: true},
-  {name: "wheel_lb", bus: "can0", id: 0x203,
-   type: "3508", ctrl: "speed" ,dir: true},
-  {name: "wheel_rb", bus: "can0", id: 0x204,
-   type: "3508", ctrl: "speed" ,dir: false},
-  {name: "yaw", bus: "can0", id: 0x205,
-   type: "6020", ctrl: "pd" ,dir: true},
-  {name: "pitch", bus: "can1", id: 0x206,
-   type: "6020", ctrl: "pd" ,dir: true},
-  {name: "fiction_l", bus: "can1", id: 0x201,
-   type: "3508_dir", ctrl: "speed" ,dir: true},
-  {name: "fiction_r", bus: "can1", id: 0x202,
-   type: "3508_dir", ctrl: "speed" ,dir: false},
-  {name: "trigger", bus: "can0", id: 0x206,
-   type: "2006", ctrl: "pd" ,dir: true},
-  ]
-
-imu:
-  {type: "hi220", port: "/dev/usbImu", id: 0, rate: 200,
-   frame_fixed: "yaw", frame_source: "odom", frame_target: "base_link"}
-
-gpio:
-  [
-  {name: "switch", port: "can1", id: 0x300, dir: "input"},
-  ]
-
-plugins:
-  - chassis_plugins::Standard
-  - gimbal_plugins::Standard
-  - shooter_plugins::Standard
-  - imu_plugins::Hi220Uart
-```
+```standard.yaml```负责记录机器人上所有电机、IMU、GPIO和插件的信息，```joint_param.yaml```负责记录电机控制器参数。
 
 
-
-standard.yaml负责记录机器人上所有电机、IMU、GPIO和插件的信息
-
+standard.yaml文件包含以下信息：
 ### joint:
 
 | 参数名称 |   参数作用   |
@@ -155,6 +115,47 @@ joint:
 imu:
   {type: "hi220", port: "/dev/usbImu", id: 1, rate: 200,
    frame_fixed: "yaw", frame_source: "odom", frame_target: "base_link"}
+```
+
++ standard.yaml的内容：
+
+```yaml
+joint:
+  [
+  {name: "wheel_rf", bus: "can0", id: 0x201,
+   type: "3508", ctrl: "speed" ,dir: false},
+  {name: "wheel_lf", bus: "can0", id: 0x202,
+   type: "3508", ctrl: "speed" ,dir: true},
+  {name: "wheel_lb", bus: "can0", id: 0x203,
+   type: "3508", ctrl: "speed" ,dir: true},
+  {name: "wheel_rb", bus: "can0", id: 0x204,
+   type: "3508", ctrl: "speed" ,dir: false},
+  {name: "yaw", bus: "can0", id: 0x205,
+   type: "6020", ctrl: "pd" ,dir: true},
+  {name: "pitch", bus: "can1", id: 0x206,
+   type: "6020", ctrl: "pd" ,dir: true},
+  {name: "fiction_l", bus: "can1", id: 0x201,
+   type: "3508_dir", ctrl: "speed" ,dir: true},
+  {name: "fiction_r", bus: "can1", id: 0x202,
+   type: "3508_dir", ctrl: "speed" ,dir: false},
+  {name: "trigger", bus: "can0", id: 0x206,
+   type: "2006", ctrl: "pd" ,dir: true},
+  ]
+
+imu:
+  {type: "hi220", port: "/dev/usbImu", id: 0, rate: 200,
+   frame_fixed: "yaw", frame_source: "odom", frame_target: "base_link"}
+
+gpio:
+  [
+  {name: "switch", port: "can1", id: 0x300, dir: "input"},
+  ]
+
+plugins:
+  - chassis_plugins::Standard
+  - gimbal_plugins::Standard
+  - shooter_plugins::Standard
+  - imu_plugins::Hi220Uart
 ```
 
 
