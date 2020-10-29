@@ -4,12 +4,12 @@
 - [Robot Operating System (ROS)](http://wiki.ros.org) (middleware for robotics),
 - xxxxxx
 
-安装ROS后，通过。
+安装ROS后，安装所需依赖包。
 
     sudo apt-get install ros-melodic-apriltag-ros              \
                          ros-melodic-behaviortree-cpp-v3      \
 
-## 从Git上拉取
+## 从Git上拉取与编译
 首先从github下clone仓库代码
 
     git clone https://github.com/QiayuanLiao/RM-Software.git
@@ -18,7 +18,7 @@
 >
 >该仓库包含了一个catkin_workspace, 需要在 `.bashrc` 中添加。
 
-初始化子模块
++初始化子模块
 
     git submodule update --init --recursive 
 
@@ -31,6 +31,13 @@
 
 初始化过程中，如出现```无法读取远程仓库。请确认您有正确的访问权限并且仓库存在```的错误，请参考[解决方案](https://blog.csdn.net/qq_36770641/article/details/88638573) 
 
++ 编译
+  ```
+  cd RM-Software/rm_ws/
+  catkin_make
+  # 加载环境变量
+  source devel/setup.bash
+  ```
 # 配置文件
 ## yaml文件
 yaml文件所在目录：```~/RM-Software-master/rm_ws/src/rm_bringup/config```下的```joint_param.yaml```和``standard.yaml``
