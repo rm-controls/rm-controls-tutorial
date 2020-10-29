@@ -11,7 +11,7 @@
 ## 从Git上拉取与编译
 + 从github下clone仓库代码
 
-    git clone https://github.com/QiayuanLiao/RM-Software.git
+    ```git clone https://github.com/QiayuanLiao/RM-Software.git```
 
 > [!Tip]
 >
@@ -19,7 +19,7 @@
 
 + 初始化子模块
 
-    git submodule update --init --recursive 
+    ```git submodule update --init --recursive ```
 
 > [!Note]
 >
