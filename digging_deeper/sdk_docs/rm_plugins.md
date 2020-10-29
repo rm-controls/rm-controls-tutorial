@@ -69,123 +69,129 @@ rm_plugins
 
 ## 对各Topic的功能的简述
 
-|      话题      |  消息类型  |                       作用                       |
+|      话题      |  发布消息  |                       功能                       |
 | :------------: | :--------: | :----------------------------------------------: |
 | “/chassis_cmd” | ChassisCmd |                发布底盘的运行状态                |
 | "/gimbal_cmd"  | GimbalCmd  |   发布底盘的运行状态，pitch轴和yaw轴的运动速率   |
 |  "shoot_cmd"   |  ShootCmd  | 发布发射机构的运动状态，弹丸发射数量，速度，频率 |
 |   "vel_cmd"    |   Twist    |           发布底盘运动的角速度和线速度           |
 
-各消息类型的具体情况可见rm_msgs功能包中的msg文件夹下对应的.msg文件。
+各消息类型的具体情况可见“rm_msgs/msg”路径下对应的文件。
+
+
+
+## 对基类的说明
+
+在“rm_base/include/base/plugin_base.h”路径下，定义了一个名为PluginBase的类，该类是所有插件的基类。在PluginBase中，定义了4个基本成员函数，这是各模块实现基本功能的函数，现对其进行简单说明。
+
++ init：构建一个ROS包装器。
++ run：启动状态机，根据当前模块的运动状态执行相应功能。
++ enble：启动关节（电机）。
++ disable：关闭关节（电机）。
 
 
 
 ## 底盘模块
 
-在chassis_plugins.h文件中，创建了底盘模块对应的插件类StandChassis。现对该插件类的主要成员函数进行说明。
+在chassis_plugins.h文件中，创建了底盘模块对应的插件类StandChassis。现对该插件类的主要成员和运动状态进行说明。
 
-### 基本成员函数说明
+### 1、主要成员
 
-+ init ：建立ROS包装器。
-+ run：运行状态机，并通过状态机计算关节（电机）数据。
 + computerData：使用逆运动学，由关节数据(电机速度)，计算底盘运动数据和Odom坐标变换。
-+ fKine：使用正向运动学，在底盘框架下，根据熟读计算关节数据（电机速度）。
++ fKine：使用正向运动学，在底盘框架下，根据速度计算关节数据（电机速度）。
 + getVelData：获取底盘运动时，x,y,z方向上的线速度。
 + chassisCmdCB：底盘命令回调函数。
++ state_：枚举型变量，含5种取值（PASSIVE，RAW，FOLLOW，TWIST，GYRO），表示运动状态。
++ chass_cmd_sub_：ROS订阅器，启动init函数后，订阅"/chassis_cmd"话题所发布的消息。
++ vel_cmd_sub_：ROS订阅器，启动init函数后，订阅“/vel_cmd_sub”话题所发布的消息。
 
- 在chassis_plugins.h文件中，定义了一个枚举型数据类型StandardState，该类型有5种可能的取值（PASSIVE，RAW，FOLLOW，TWIST，DYRO），分别对应5种状态。
+ 
 
-在StandChassis类中，有一个StandardState类型的成员变量state_，运行run成员函数时，会根据当前state__的值，执行相应状态的函数。
-
-+ 当state_的值为PASSIVE时，执行run函数后，会启动passive函数，此时底盘所有电机断电。
-+ 当state_的值为RAW时，执行run函数后，启动raw函数，会启动recoverK函，恢复各节点（电机）的状态，并保存原始数据。
-+ 当state_的值为FLLOW、TWIST、GYRO时，执行run函数后，启动相应状态下的函数，会启动recoverK函数，恢复各节点（电机）的状态。
-
-### 底盘状态机
-
-在StandChassis类中，有2个ROS订阅器作为成员变量，vel_cmd_sub_，chassis_cmd_sud__。在启动init函数后，前者订阅“/vel_cmd”话题所发布的消息，后者订阅“/chassis_cmd”话题所发布的消息。
+### 2、底盘状态机
 
 当底盘状态广播器所发布的状态消息改变时，chassis_cmd_sub_接收到消息后，会进入chassisCmdCB函数，改变state__的值，此时，在run函数中，便会启动相应状态所对应功能的函数。
 
-在实际使用时，仅需通过rm_base类（在rm_base功能包中）的一个实例，载入该插件，并调用该实例的run成员函数，底盘就会自动根据当前的state_的值，执行相应的功能。
+- 当state_的值为PASSIVE时，会启动passive函数，此时底盘所有电机断电。
+
+- 当state_的值为RAW时，启动raw函数，会启动recoverK函，恢复各节点（电机）的状态，并保存原始数据。
+
+- 当state_的值为FLLOW、TWIST、GYRO时，启动相应状态下的函数，会启动recoverK函数，恢复各节点（电机）的状态
+
+
 
 
 
 ## 云台模块
 
-在gimbal_plugins.h文件中，创建了云台模块对应的插件类StandGimbal。现对该插件类的主要成员函数进行说明。
+在gimbal_plugins.h文件中，创建了云台模块对应的插件类StandGimbal。现对该插件类的主要成员和运动状态进行说明。
 
-### 基本成员函数说明
+### 1、基本成员
 
-+ init：建立ROS包装器。
-+ run：运行状态机，并通过状态机计算关节（电机）数据。
 + computerData：根据关节（电机）数据，计算云台数据并更新tf坐标变换。
+
 + cmdCB：云台命令回调函数。
-+ reconfigCB：动态重新配置回调函数
 
-在gimbal_plugins.h文件中，定义了一个枚举型数据类型StandardState，该类型有3种可能的取值（PASSIVE，RATE，TRACK），分别对应3种状态。
++ state_：枚举型变量，含3种取值（PASSIVE，RATE，TRACK），表示运动状态。
 
-在StandGimbal类中，有一个StandardState类型的成员变量state_，运行run成员函数时，会根据当前state__的值，执行相应状态的函数。
++ cmd_sub_：ROS订阅器，启动init函数后，订阅“/Gimbal_cmd”话题所发布的消息。
 
-+ 当state_的值为PASSIVE时，执行run函数后，会启动passive函数，此时，控制yaw轴和pitch轴的电机都会断电。
-+ 当state_的值为RATE时，执行run函数后，会启动rate函数，此时，pos loop启动。
-+ 当state_的值为TRACK时，执行run函数后，会启动track函数，此时，云台工作在跟踪模式下。
+  
 
-### 云台状态机
-
-在StandGimbal类中，有一个ROS订阅器作为成员变量，cmd_sub_。在启动init函数后，会订阅“/Gimbal_cmd”话题所发布的消息。
+### 2、云台状态机
 
 当云台状态广播器所发布的状态消息改变时，cmd_sub_接收到消息后，会进入cmdCB函数，改变state__的值，此时，在run函数中，便会启动相应状态所对应功能的函数。
 
-在实际使用时，仅需通过rm_base类（在rm_base功能包中）的一个实例，载入该插件，并调用该实例的run成员函数，云台就会自动根据当前的state_的值，执行相应的功能。
++ 当state_的值为PASSIVE时，执行run函数后，会启动passive函数，此时，控制yaw轴和pitch轴的电机都会断电。
+
++ 当state_的值为RATE时，执行run函数后，会启动rate函数，此时，pos loop启动。
+
++ 当state_的值为TRACK时，执行run函数后，会启动track函数，此时，云台工作在跟踪模式下。
 
 
 
 ## 发射机构
 
-在shooter_plugins.h文件中，创建了发射机构对应的插件类StandShooter。现对该插件类的主要成员函数进行说明。
+在shooter_plugins.h文件中，创建了发射机构对应的插件类StandShooter。现对该插件类的主要成员和运动状态进行说明。
 
-### 基本成员函数说明
+### 1、基本成员
 
-+ init：建立ROS包装器。
-+ run：运行状态机，并通过状态机计算关节（电机）数据。
 + shoot：对发射弹丸的数量和发射频率进行设置。
+
 + setSpeed：设置弹丸的发射速度。
+
 + cmdCB：发射命令回调函数。
 
-在shooter_plugins.h文件中，定义了一个枚举型数据类型StandardState，该类型有5种可能的取值（PASSIVE，FEED、READY、PUSH、BLOCK），分别对应5种状态。
++ state_：枚举型变量，含5种取值（PASSIVE，FEED、READY、PUSH、BLOCK），表示运动状态。
 
-在StandShooter类中，有一个StandardState类型的成员变量state_，运行run成员函数时，会根据当前state__的值，执行相应状态的函数。
++ cmd_sub_：ROS订阅器，启动init函数后，订阅“/Shooter_cmd”话题所发布的消息。
 
-+ 当state_的值为PASSIVE时，执行run函数后，电机断电。
+  
 
-+ 当state_的值为BLOCK时，表示拨弹轮堵塞的，执行run函数后，拨弹轮会回拨一段时间，解决堵塞的情况。
+### 2、发射机构状态机说明 
 
-+ 当state_的值为FEED时，执行run函数后，进行补弹操作。首先打开拨弹轮的电机，再打开传动电机，将弹丸运输至发射口。
+当发射机构状态广播器所发布的状态消息改变时，cmd_sub_接收到消息后，会进入cmdCB函数。
+
+若所发布的消息中的mode为0，则state_的值修改为PASSIVE。
+
+否则，若当前的state_值为PASSIVE，则将其改为FEED。
+
+接着，根据发布的发射速度（作为函数的输入）启动setSpeed函数，以及根据所发布的弹丸数量和发射频率（作为函数的输入），启动shoot函数。
+
+- 当state_的值为PASSIVE时，执行run函数后，电机断电。
+
+- 当state_的值为FEED时，执行run函数后，进行补弹操作。打开拨弹轮电机，将弹丸运输至发射口。
 
   若运输过程中，拨弹轮发射堵塞，state_值会被修改为BLOCK；
 
   当弹丸运输至发射口前，触碰到发射开关时，state_的值会被修改为READY。
 
-+ 当state_的值为READY时，执行run函数后，会停止拨弹轮电机，启动pos循环，同时判断可发射的弹丸数量和发射频率是否达到可进行发射操作的要求，若是，则将state__的值转变为PUSH。
+- 当state_的值为BLOCK时，表示拨弹轮堵塞的，执行run函数后，拨弹轮会回拨一段时间，解决堵塞的情况。
 
-+ 当state_的值为PUSH时，执行run函数后，摩擦轮转动，将弹丸发射出去。
+- 当state_的值为READY时，执行run函数后，会停止拨弹轮电机，启动pos循环，同时判断可发射的弹丸数量和发射频率是否达到可进行发射操作的要求，若是，则将state__的值转变为PUSH。
 
-### 发射机构状态机说明 
+- 当state_的值为PUSH时，执行run函数后，摩擦轮转动，将弹丸发射出去。
 
-在StandShooter类中，有一个ROS订阅器作为成员变量，cmd_sub_。在启动init函数后，会订阅“/Shooter_cmd”话题所发布的消息。
-
-当发射机构状态广播器所发布的状态消息改变时，cmd_sub_接收到消息后，会进入cmdCB函数。
-
-若所发布的消息中的状态为PASSIVE，则state_的值修改为PASSIVE
-
-若当前的state_值为PASSIVE，则将其改为FEED。
-
-接着，根据发布的发射速度（作为函数的输入）启动setSpeed函数，以及根据所发布的弹丸数量和发射频率（作为函数的输入），启动shoot函数。
-
-在实际使用时，仅需通过rm_base类（在rm_base功能包中）的一个实例，载入该插件，并调用该实例的run成员函数，发射机构就会自动根据当前的state_的值，执行相应的功能。
-
-
+  
 
 ## Gpio
 
