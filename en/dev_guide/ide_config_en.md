@@ -44,7 +44,11 @@ sudo apt-get install make
 
 1. Create a C++ Executable project. You can set the location and language standard of the new project.
 
+    ![Image](../../img/ide_config/new_project.png)
+
 2. Press **File->Settings->Build,Execution,Deployment->Toolchains** and fill the corresponding locations.
+
+   ![Image](../../img/ide_config/toolchain.png)
 
    > [!Note]
    >
@@ -52,10 +56,16 @@ sudo apt-get install make
 
 3. Press **Run->Edit Configurations**, click the **＋** button and create a **CMake Application**.
 
+    ![Image](../../img/ide_config/debug_config.png)
+
 4. Press **Run->Run 'Debug'** to run the program. If the output is the same as below, the configuration is successful.
+
+    ![Image](../../img/ide_config/output.png)
 
 
 ## Remote compilation
+
+Suppose the name of the program you want to debug is 'Test', the server IP is 10.10.100.10, and the external service port is 8888. 
 
 ### Server configuration
 
@@ -65,7 +75,7 @@ sudo apt-get install make
    sudo apt-get install gdbserver
    ```
 
-2. Run gdbserver for remote compilation.  Suppose the name of the program you want to debug is 'test ', the server IP is 10.10.100.10, and the external service port is 8888. 
+2. Run gdbserver for remote compilation.  
 
    ```bash
    # gdbserver IP:PORT PROGRAM_NAME
@@ -84,9 +94,15 @@ sudo apt-get install make
 
 1. Click the **＋** button and choose **SFTP** type to add a web server.
 
-2. Add a **SSH configuration**. Fill the server's **Host, Port, User name** and  **Password**. Press **Test Connection** to confirm the connection.
+    ![Image](../../img/ide_config/deployment.png)
+
+2. Click `...` and add a **SSH configuration**. Fill the server's **Host, Port, User name** and  **Password**. Press **Test Connection** to confirm the connection.
+
+    ![Image](../../img/ide_config/ssh_config.png)
 
 3. Switch to **Mappings**, fill the **Local path**(local code path) and **Deployment path**(remote code path).
+
+    ![Image](../../img/ide_config/mapping.png)
 
 
 #### Code synchronized
@@ -95,6 +111,8 @@ sudo apt-get install make
 
 2. Enable **Tools->Deployment->Automatic Upload** to ensure that code is automatically synchronized to the server.
 
+    ![Image](../../img/ide_config/auto_upload.png)
+
 #### Debug configuration
 
 1. Press **Run->Edit Configuration**.
@@ -102,4 +120,8 @@ sudo apt-get install make
 2. Click the **＋** button and create a **GDB Remote Debug**.
 
 3. Setting **'target remote' args** and **Path mappings**.
+
+    ![Image](../../img/ide_config/debug_config_remote.png)
+
+4. Press **Run->Run 'Debug'** to run the program remotely.
 
