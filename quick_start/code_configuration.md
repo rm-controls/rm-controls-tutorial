@@ -10,7 +10,7 @@
                          ros-melodic-behaviortree-cpp-v3      \
 
 ## 从Git上拉取与编译
-首先从github下clone仓库代码
++ 从github下clone仓库代码
 
     git clone https://github.com/QiayuanLiao/RM-Software.git
 
@@ -18,7 +18,7 @@
 >
 >该仓库包含了一个catkin_workspace, 需要在 `.bashrc` 中添加。
 
-+初始化子模块
++ 初始化子模块
 
     git submodule update --init --recursive 
 
