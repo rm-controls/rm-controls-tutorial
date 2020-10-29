@@ -7,7 +7,7 @@
 安装ROS后，通过。
 
     sudo apt-get install ros-melodic-apriltag-ros              \
-                         ros-melodic-behaviortree_cpp_v3      \
+                         ros-melodic-behaviortree-cpp-v3      \
 
 ## 从Git上拉取
 首先从github下clone仓库代码
