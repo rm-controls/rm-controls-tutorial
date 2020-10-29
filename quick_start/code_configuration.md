@@ -39,10 +39,12 @@
   ```
 # 不同机器人上使用同一套RM_BASE指南
 在RM_BASE中，只需修改几个配置文件，便可实现对不同机器人的控制。
-## joint_param.yaml和standard.yaml
+## joint_param.yaml和```standard.yaml```
+
 yaml文件所在目录：```~/RM-Software-master/rm_ws/src/rm_bringup/config```下的```joint_param.yaml```和```standard.yaml```
 
-+ 修改standard.yaml
++ 修改```standard.yaml```
+
 ```standard.yaml```负责记录机器人上所有电机、IMU、GPIO和插件的信息
 
 ### joint:
@@ -94,7 +96,7 @@ yaml文件所在目录：```~/RM-Software-master/rm_ws/src/rm_bringup/config```�
 + 一个类型为hi220、端口为/dev/usbImu、ID号为1、速率为200hz、frame_fixed为yaw、frame_source为odom、frame_target为base_link的陀螺仪。
 
   
-则示例standard.yaml文件如下：
+则示例```standard.yaml```文件如下：
 
 ```yaml
 joint:
@@ -114,8 +116,9 @@ imu:
    frame_fixed: "yaw", frame_source: "odom", frame_target: "base_link"}
 ```
 
-+ 根据standard.yaml编写standard.yaml
-```joint_param.yaml```负责记录电机控制器参数，应与```standard.yaml```一一对应。因此，示例的joint_param.yaml文件包含以下内容：
++ 根据```standard.yaml```编写```joint_param.yaml```
+
+```joint_param.yaml```负责记录电机控制器参数，应与```standard.yaml```一一对应。因此，示例的```joint_param.yaml```文件如下：
 
 ```yaml
 joint_param:
