@@ -394,5 +394,3 @@ rosrun turtlesim turtle_teleop_key
 sudo apt update
 sudo apt upgrade
    ```
-
-   
