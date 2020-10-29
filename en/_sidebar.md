@@ -5,7 +5,7 @@
   * [Software Framework](en/software_framework.md)
 * Quick Start
   * [System and dependencies installation](en/quick_start/installation.md)
-  * [System modification(real time)](en/quick_start/modification.md)
+  * [System modification(real time)](en/quick_start/system modification (real-time).md)
   * [Code configuration and compile](en/quick_start/code_configuration.md)
 * Developer Guide
   * [IDE config](en/dev_guide/ide_config.md)
