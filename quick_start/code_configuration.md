@@ -18,6 +18,10 @@
 >
 >相机驱动和视觉算法两个节点以submodule形式管理。
 
+
+常见问题：
+
+初始化过程中，如出现```无法读取远程仓库。请确认您有正确的访问权限并且仓库存在```的错误，请参考[解决方案](https://blog.csdn.net/qq_36770641/article/details/88638573) 
 ## 依赖
 
 - [Robot Operating System (ROS)](http://wiki.ros.org) (middleware for robotics),
