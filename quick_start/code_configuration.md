@@ -8,7 +8,7 @@
 >
 >该仓库包含了一个catkin_workspace, 需要在 `.bashrc` 中最后一行添加。
 
-```source ~/RM-Software-master/rm_ws/devel/setup.bash```
+```source ~/RM-Software/rm_ws/devel/setup.bash```
 
 初始化子模块
 
