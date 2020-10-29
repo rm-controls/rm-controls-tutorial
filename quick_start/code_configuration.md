@@ -1,18 +1,25 @@
 # 安装
-## 从Git上拉取
-首先从github下clone仓库代码
+## 软件依赖配置
+默认安装ROS melodic，可参考ROS Wiki的安装教程安装ROS
+- [Robot Operating System (ROS)](http://wiki.ros.org/cn) (middleware for robotics),
 
-    git clone https://github.com/QiayuanLiao/RM-Software.git
+安装ROS后，安装所需依赖包。
+
+    sudo apt-get install ros-melodic-apriltag-ros              \
+                         ros-melodic-behaviortree-cpp-v3       \
+
+## 从Git上拉取与编译
++ 从github下clone仓库代码
+
+    ```git clone https://github.com/QiayuanLiao/RM-Software.git```
 
 > [!Tip]
 >
->该仓库包含了一个catkin_workspace, 需要在 `.bashrc` 中最后一行添加。
+>该仓库包含了一个catkin_workspace, 需要在 `.bashrc` 中添加。
 
-```source ~/RM-Software/rm_ws/devel/setup.bash```
++ 初始化子模块
 
-初始化子模块
-
-    git submodule update --init --recursive 
+    ```git submodule update --init --recursive ```
 
 > [!Note]
 >
@@ -22,64 +29,23 @@
 常见问题：
 
 初始化过程中，如出现```无法读取远程仓库。请确认您有正确的访问权限并且仓库存在```的错误，请参考[解决方案](https://blog.csdn.net/qq_36770641/article/details/88638573) 
-## 依赖
 
-- [Robot Operating System (ROS)](http://wiki.ros.org) (middleware for robotics),
-- xxxxxx
++ 编译
+  ```
+  cd RM-Software/rm_ws/
+  catkin_make
+  # 加载环境变量
+  source devel/setup.bash
+  ```
+# 不同机器人上使用同一套RM_BASE指南
+在RM_BASE中，只需修改几个配置文件，便可实现对不同机器人的控制。
+## ```joint_param.yaml```和```standard.yaml```
 
-安装ROS后，通过。
+yaml文件所在目录：```~/RM-Software-master/rm_ws/src/rm_bringup/config```下的```joint_param.yaml```和```standard.yaml```
 
-    sudo apt-get install ros-melodic-[依赖包名]
++ 修改```standard.yaml```
 
-
-# 配置文件
-## yaml文件
-yaml文件所在目录：```~/RM-Software-master/rm_ws/src/rm_bringup/config```下的```joint_param.yaml```和``standard.yaml``
-
-+ standard.yaml的内容：
-
-```yaml
-joint:
-  [
-  {name: "wheel_rf", bus: "can0", id: 0x201,
-   type: "3508", ctrl: "speed" ,dir: false},
-  {name: "wheel_lf", bus: "can0", id: 0x202,
-   type: "3508", ctrl: "speed" ,dir: true},
-  {name: "wheel_lb", bus: "can0", id: 0x203,
-   type: "3508", ctrl: "speed" ,dir: true},
-  {name: "wheel_rb", bus: "can0", id: 0x204,
-   type: "3508", ctrl: "speed" ,dir: false},
-  {name: "yaw", bus: "can0", id: 0x205,
-   type: "6020", ctrl: "pd" ,dir: true},
-  {name: "pitch", bus: "can1", id: 0x206,
-   type: "6020", ctrl: "pd" ,dir: true},
-  {name: "fiction_l", bus: "can1", id: 0x201,
-   type: "3508_dir", ctrl: "speed" ,dir: true},
-  {name: "fiction_r", bus: "can1", id: 0x202,
-   type: "3508_dir", ctrl: "speed" ,dir: false},
-  {name: "trigger", bus: "can0", id: 0x206,
-   type: "2006", ctrl: "pd" ,dir: true},
-  ]
-
-imu:
-  {type: "hi220", port: "/dev/usbImu", id: 0, rate: 200,
-   frame_fixed: "yaw", frame_source: "odom", frame_target: "base_link"}
-
-gpio:
-  [
-  {name: "switch", port: "can1", id: 0x300, dir: "input"},
-  ]
-
-plugins:
-  - chassis_plugins::Standard
-  - gimbal_plugins::Standard
-  - shooter_plugins::Standard
-  - imu_plugins::Hi220Uart
-```
-
-
-
-standard.yaml负责记录机器人上所有电机、IMU、GPIO和插件的信息
+```standard.yaml```负责记录机器人上所有电机、IMU、GPIO和插件的信息
 
 ### joint:
 
@@ -119,19 +85,18 @@ standard.yaml负责记录机器人上所有电机、IMU、GPIO和插件的信息
 
 假如我们现在要编写一辆仅具备移动功能的机器人，我们需要在joint下添加四个电机来控制轮子、一个陀螺仪来获取加速度信息：
 
-+ 第一个name为wheel_lf、挂载在can0总线上、ID号为0x201、电机类型为3508、控制器为PD控制器、正向转动的左前轮电机。
++ name为wheel_lf、挂载在can0总线上、ID号为0x201、电机类型为3508、控制器为PD控制器、正向转动的左前轮电机。
 
-+ 第二个name为wheel_rf、挂载在can0总线上、ID号为0x202、电机类型为3508、控制器为PD控制器、正向转动的右前轮电机。
++ name为wheel_rf、挂载在can0总线上、ID号为0x202、电机类型为3508、控制器为PD控制器、正向转动的右前轮电机。
 
-+ 第三个name为wheel_lb、挂载在can0总线上、ID号为0x203、电机类型为3508、控制器为PD控制器、正向转动的左后轮电机。
++ name为wheel_lb、挂载在can0总线上、ID号为0x203、电机类型为3508、控制器为PD控制器、正向转动的左后轮电机。
 
-+ 第四个name为wheel_rb、挂载在can0总线上、ID号为0x204、电机类型为3508、控制器为PD控制器、正向转动的右后轮电机。
++ name为wheel_rb、挂载在can0总线上、ID号为0x204、电机类型为3508、控制器为PD控制器、正向转动的右后轮电机。
 
-+ 一个类型为hi220、端口为/dev/usbImu、ID号为1、速率为200hz、frame_fixed为yaw、frame_source为odom、frame_target为base_link的陀螺仪。
++ 类型为hi220、端口为/dev/usbImu、ID号为1、速率为200hz、frame_fixed为yaw、frame_source为odom、frame_target为base_link的陀螺仪。
 
   
-
-则示例standard.yaml文件如下：
+则示例```standard.yaml```文件如下：
 
 ```yaml
 joint:
@@ -151,5 +116,20 @@ imu:
    frame_fixed: "yaw", frame_source: "odom", frame_target: "base_link"}
 ```
 
++ 根据```standard.yaml```编写```joint_param.yaml```
 
-## launch文件
+```joint_param.yaml```负责记录电机控制器参数，应与```standard.yaml```一一对应。因此，示例的```joint_param.yaml```文件如下：
+
+```yaml
+joint_param:
+  [
+    #RoboMaster 3508 motor:
+    #q:   3.99456179e-5  = 2PI/8192*(187/3591)
+    #qd:  0.0054532426   = 2PI/60*(187/3591)
+    #out: 2730.666666    = 1/(20/16384*0.3)
+    #range: -16384.0~16384.0
+  {type: "3508", q_coff: 3.99456179e-5, qd_coff: 0.0054532426,
+   out_coff: 2730.666666, out_range: 16384.0},
+  ]
+```
+

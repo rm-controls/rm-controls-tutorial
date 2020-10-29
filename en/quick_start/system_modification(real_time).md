@@ -64,9 +64,11 @@ RT-Preempt Patch is based on the Linux community kernel, plus related patches to
     ```bash
     CONFIG_DEBUG_INFO=n #Prevent compilation of debug files
     make -j`nproc` && make -j`nproc` bindeb-pk #Compile and package
-    #'nproc' is the number of cpu threads, use the nproc command to view
-    #For example, if the cpu is 4 threads, then make -j'nproc'=make -j4
     ```
+
+    > [!Tip]
+    >
+    >'nproc' is the number of cpu threads, use the nproc command to view.For example, if the cpu is 4 threads, then make -j'nproc'=make -j4
 
     Then you will get
     ```bash
