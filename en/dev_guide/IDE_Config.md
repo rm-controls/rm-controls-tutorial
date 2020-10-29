@@ -1,1 +1,99 @@
-by 陈沛达
+# IDE configuration
+
+## Environment construction
+
+1. Open a terminal and execute the following commands:
+
+```bash
+sudo apt-get update
+sudo apt-get install build-essential
+sudo apt-get install cmake
+sudo apt-get install bison
+sudo apt-get install library*
+sudo apt-get install libncurses5-dev
+sudo apt-get install g++
+sudo apt-get install kdelibs5-dev
+sudo apt-get install make
+```
+
+## Install CLion
+
+1. [Download the tarball](https://www.jetbrains.com/clion/download/) **.tar.gz** .
+
+2. Unpack the downloaded **CLion-*.tar.gz** archive. The recommended extract directory is /opt: 
+
+   ```bash
+   sudo tar xvzf CLion-*.tar.gz -C /opt/
+   ```
+
+    <div class="alert alert-warning" role="alert">Do not extract the tarball over an existing installation to avoid conflicts. Always extract to a clean directory.</div>
+
+3. Execute the **CLion.sh** from **bin** subdirectory to run CLion:
+
+   ```bash
+   sh /opt/clion-*/bin/clion.sh
+   ```
+
+   When you run CLion for the first time, some steps are required  to complete the installation, customize your instance, and start working with the IDE.     
+
+   For more information, see [Run CLion for the first time](https://www.jetbrains.com/help/clion/run-for-the-first-time.html).
+
+## Configure the IDE
+
+1. Create a C++ Executable project. You can set the location and language standard of the new project.
+
+2. Press **File->Settings->Build,Execution,Deployment->Toolchains** and fill the corresponding locations.
+
+   <div class="alert alert-info" role="alert">No red error indicates successful configuration.</div>
+
+3. Press **Run->Edit Configurations**, click the **＋** button and create a **CMake Application**.
+
+4. Press **Run->Run 'Debug'** to run the program. If the output is the same as below, the configuration is successful.
+
+
+## Remote compilation
+
+### Server configuration
+
+1. Install gdbserver.
+
+   ```bash
+   sudo apt-get install gdbserver
+   ```
+
+2. Run gdbserver for remote compilation.  Suppose the name of the program you want to debug is 'test ', the server IP is 10.10.100.10, and the external service port is 8888. 
+
+   ```bash
+   # gdbserver IP:PORT PROGRAM_NAME
+   gdbserver 10.10.100.10:8888 /usr/Test/test
+   ```
+
+   <div class="alert alert-info" role="alert">Remote debugging depends on GDBSERVER. The program started by GDBSERVER will wait for the connection of remote debugging first, and then start the process after the connection is successful.</div>
+
+### Local configuration
+
+#### Deployment configuration
+
+​	Press **Tools->Deployment->Configuration**. 
+
+1. Click the **＋** button and choose **SFTP** type to add a web server.
+
+2. Add a **SSH configuration**. Fill the server's **Host, Port, User name** and  **Password**. Press **Test Connection** to confirm the connection.
+
+3. Switch to **Mappings**, fill the **Local path**(local code path) and **Deployment path**(remote code path).
+
+
+#### Code synchronized
+
+1. Press **Tools->Deployment->Upload to Server/Download from Server**.
+
+2. Enable **Tools->Deployment->Automatic Upload** to ensure that code is automatically synchronized to the server.
+
+#### Debug configuration
+
+1. Press **Run->Edit Configuration**.
+
+2. Click the **＋** button and create a **GDB Remote Debug**.
+
+3. Setting **'target remote' args** and **Path mappings**.
+
