@@ -39,7 +39,7 @@
   ```
 # 不同机器人上使用同一套RM_BASE指南
 在RM_BASE中，只需修改几个配置文件，便可实现对不同机器人的控制。
-## joint_param.yaml和```standard.yaml```
+## ```joint_param.yaml```和```standard.yaml```
 
 yaml文件所在目录：```~/RM-Software-master/rm_ws/src/rm_bringup/config```下的```joint_param.yaml```和```standard.yaml```
 
@@ -85,15 +85,15 @@ yaml文件所在目录：```~/RM-Software-master/rm_ws/src/rm_bringup/config```�
 
 假如我们现在要编写一辆仅具备移动功能的机器人，我们需要在joint下添加四个电机来控制轮子、一个陀螺仪来获取加速度信息：
 
-+ 第一个name为wheel_lf、挂载在can0总线上、ID号为0x201、电机类型为3508、控制器为PD控制器、正向转动的左前轮电机。
++ name为wheel_lf、挂载在can0总线上、ID号为0x201、电机类型为3508、控制器为PD控制器、正向转动的左前轮电机。
 
-+ 第二个name为wheel_rf、挂载在can0总线上、ID号为0x202、电机类型为3508、控制器为PD控制器、正向转动的右前轮电机。
++ name为wheel_rf、挂载在can0总线上、ID号为0x202、电机类型为3508、控制器为PD控制器、正向转动的右前轮电机。
 
-+ 第三个name为wheel_lb、挂载在can0总线上、ID号为0x203、电机类型为3508、控制器为PD控制器、正向转动的左后轮电机。
++ name为wheel_lb、挂载在can0总线上、ID号为0x203、电机类型为3508、控制器为PD控制器、正向转动的左后轮电机。
 
-+ 第四个name为wheel_rb、挂载在can0总线上、ID号为0x204、电机类型为3508、控制器为PD控制器、正向转动的右后轮电机。
++ name为wheel_rb、挂载在can0总线上、ID号为0x204、电机类型为3508、控制器为PD控制器、正向转动的右后轮电机。
 
-+ 一个类型为hi220、端口为/dev/usbImu、ID号为1、速率为200hz、frame_fixed为yaw、frame_source为odom、frame_target为base_link的陀螺仪。
++ 类型为hi220、端口为/dev/usbImu、ID号为1、速率为200hz、frame_fixed为yaw、frame_source为odom、frame_target为base_link的陀螺仪。
 
   
 则示例```standard.yaml```文件如下：
