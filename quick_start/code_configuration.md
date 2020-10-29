@@ -30,5 +30,86 @@
 
 # 配置文件
 ## yaml文件
+yaml文件所在目录：**```~/RM-Software-master/rm_ws/src/rm_bringup/config```**下的**```joint_param.yaml```**和**``standard.yaml``**
+
++ standard.yaml的内容：
+
+```yaml
+joint:
+  [
+  {name: "wheel_rf", bus: "can0", id: 0x201,
+   type: "3508", ctrl: "speed" ,dir: false},
+  {name: "wheel_lf", bus: "can0", id: 0x202,
+   type: "3508", ctrl: "speed" ,dir: true},
+  {name: "wheel_lb", bus: "can0", id: 0x203,
+   type: "3508", ctrl: "speed" ,dir: true},
+  {name: "wheel_rb", bus: "can0", id: 0x204,
+   type: "3508", ctrl: "speed" ,dir: false},
+  {name: "yaw", bus: "can0", id: 0x205,
+   type: "6020", ctrl: "pd" ,dir: true},
+  {name: "pitch", bus: "can1", id: 0x206,
+   type: "6020", ctrl: "pd" ,dir: true},
+  {name: "fiction_l", bus: "can1", id: 0x201,
+   type: "3508_dir", ctrl: "speed" ,dir: true},
+  {name: "fiction_r", bus: "can1", id: 0x202,
+   type: "3508_dir", ctrl: "speed" ,dir: false},
+  {name: "trigger", bus: "can0", id: 0x206,
+   type: "2006", ctrl: "pd" ,dir: true},
+  ]
+
+imu:
+  {type: "hi220", port: "/dev/usbImu", id: 0, rate: 200,
+   frame_fixed: "yaw", frame_source: "odom", frame_target: "base_link"}
+
+gpio:
+  [
+  {name: "switch", port: "can1", id: 0x300, dir: "input"},
+  ]
+
+plugins:
+  - chassis_plugins::Standard
+  - gimbal_plugins::Standard
+  - shooter_plugins::Standard
+  - imu_plugins::Hi220Uart
+```
+
+
+
+standard.yaml负责记录机器人上所有电机、IMU、GPIO和插件的信息
+
+### joint:
+
+| 参数名称 |   参数作用   |
+| :------: | :----------: |
+|   name   |  joint名字   |
+|   bus    |   通讯方式   |
+|    id    |    电机ID    |
+|   type   |   电机类型   |
+|   ctrl   |    控制器    |
+|   dir    | 电机转动方向 |
+
+### imu:陀螺仪
+
+|   参数名称   |  参数作用  |
+| :----------: | :--------: |
+|     type     | 陀螺仪类型 |
+|     port     |    端口    |
+|      id      | 陀螺仪ID号 |
+|     rate     |    速率    |
+| frame_fixed  |  固定框架  |
+| frame_source |   框架源   |
+| frame_target |  框架目标  |
+
+### GPIO
+
+| 参数名称 |  参数作用  |
+| :------: | :--------: |
+|   name   |    名称    |
+|   port   |   端口号   |
+|    id    |     ID     |
+|   dir    | 输入or输出 |
+
+### plugins:插件
+
 
 ## launch文件
