@@ -10,7 +10,7 @@
    sudo tar xvzf CLion-*.tar.gz -C /opt/
    ```
 
-   > ### warning
+   > [!Warning]
    >
    >  Do not extract the tarball over an existing installation to avoid conflicts.  Always  extract to a clean directory.                         
 
