@@ -111,5 +111,41 @@ standard.yaml负责记录机器人上所有电机、IMU、GPIO和插件的信息
 
 ### plugins:插件
 
+### 示例：
+
+假如我们现在要编写一辆仅具备移动功能的机器人，我们需要在joint下添加四个电机来控制轮子、一个陀螺仪来获取加速度信息：
+
++ 第一个name为wheel_lf、挂载在can0总线上、ID号为0x201、电机类型为3508、控制器为PD控制器、正向转动的左前轮电机。
+
++ 第二个name为wheel_rf、挂载在can0总线上、ID号为0x202、电机类型为3508、控制器为PD控制器、正向转动的右前轮电机。
+
++ 第三个name为wheel_lb、挂载在can0总线上、ID号为0x203、电机类型为3508、控制器为PD控制器、正向转动的左后轮电机。
+
++ 第四个name为wheel_rb、挂载在can0总线上、ID号为0x204、电机类型为3508、控制器为PD控制器、正向转动的右后轮电机。
+
++ 一个类型为hi220、端口为/dev/usbImu、ID号为1、速率为200hz、frame_fixed为yaw、frame_source为odom、frame_target为base_link的陀螺仪。
+
+  
+
+则示例standard.yaml文件如下：
+
+```yaml
+joint:
+  [
+  {name: "wheel_lf", bus: "can0", id: 0x201,
+   type: "3508", ctrl: "pd" ,dir: true},
+  {name: "wheel_rf", bus: "can0", id: 0x202,
+   type: "3508", ctrl: "pd" ,dir: true},
+  {name: "wheel_lb", bus: "can0", id: 0x203,
+   type: "3508", ctrl: "pd" ,dir: true},
+  {name: "wheel_rb", bus: "can0", id: 0x204,
+   type: "3508", ctrl: "pd" ,dir: true},
+  ]
+
+imu:
+  {type: "hi220", port: "/dev/usbImu", id: 1, rate: 200,
+   frame_fixed: "yaw", frame_source: "odom", frame_target: "base_link"}
+```
+
 
 ## launch文件
