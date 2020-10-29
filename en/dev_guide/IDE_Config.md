@@ -26,7 +26,9 @@ sudo apt-get install make
    sudo tar xvzf CLion-*.tar.gz -C /opt/
    ```
 
-    <div class="alert alert-warning" role="alert">Do not extract the tarball over an existing installation to avoid conflicts. Always extract to a clean directory.</div>
+   > [!Warning]
+   >
+   > Do not extract the tarball over an existing installation to avoid conflicts. Always extract to a clean directory.
 
 3. Execute the **CLion.sh** from **bin** subdirectory to run CLion:
 
@@ -44,7 +46,9 @@ sudo apt-get install make
 
 2. Press **File->Settings->Build,Execution,Deployment->Toolchains** and fill the corresponding locations.
 
-   <div class="alert alert-info" role="alert">No red error indicates successful configuration.</div>
+   > [!Note]
+   >
+   > No red error indicates successful configuration.
 
 3. Press **Run->Edit Configurations**, click the **＋** button and create a **CMake Application**.
 
@@ -68,7 +72,9 @@ sudo apt-get install make
    gdbserver 10.10.100.10:8888 /usr/Test/test
    ```
 
-   <div class="alert alert-info" role="alert">Remote debugging depends on GDBSERVER. The program started by GDBSERVER will wait for the connection of remote debugging first, and then start the process after the connection is successful.</div>
+   > [!Note]
+   >
+   > Remote debugging depends on GDBSERVER. The program started by GDBSERVER will wait for the connection of remote debugging first, and then start the process after the connection is successful.
 
 ### Local configuration
 

@@ -26,7 +26,9 @@ sudo apt-get install make
    sudo tar xvzf CLion-*.tar.gz -C /opt/
    ```
 
-    <div class="alert alert-warning" role="alert">为了避免冲突，不要在已有文件的目录下解压，应确保解压到一个空目录。</div>
+   > [!Warning]
+   >
+   > 为了避免冲突，不要在已有文件的目录下解压，应确保解压到一个空目录。
 
 3. 运行在 **bin** 目录下的**CLion.sh** :
 
@@ -44,7 +46,9 @@ sudo apt-get install make
 
 2. 点击 **File->Settings->Build,Execution,Deployment->Toolchains** 并填写相应的文件路径。
 
-   <div class="alert alert-info" role="alert">没有红色的警告信息则说明配置成功。</div>
+   > [!Note]
+   >
+   > 没有红色的警告信息则说明配置成功。
 
 3. 点击 **Run->Edit Configurations**, 点击 **＋** 按钮并创建一个**CMake Application**。
 
@@ -68,7 +72,9 @@ sudo apt-get install make
    gdbserver 10.10.100.10:8888 /usr/Test/test
    ```
 
-   <div class="alert alert-info" role="alert">远程调试依赖于GDBSERVER。通过GDBSERVER启动的程序将先等待远程调试的连接，连接成功后再启动进程。</div>
+   > [!Note]
+   >
+   > 远程调试依赖于GDBSERVER。通过GDBSERVER启动的程序将先等待远程调试的连接，连接成功后再启动进程。
 
 ### 本地配置
 
