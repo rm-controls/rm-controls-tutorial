@@ -8,7 +8,7 @@
   * [System modification(real time)](en/quick_start/system modification (real-time).md)
   * [Code configuration and compile](en/quick_start/code_configuration.md)
 * Developer Guide
-  * [IDE config](en/dev_guide/ide_config.md)
+  * [IDE config](en/dev_guide/ide_config_en.md)
   * [Code Style](en/dev_guide/code_style.md)
 * Introduction Doc
   * [SDK](en/digging_deeper/sdk_docs/architecture.md)
