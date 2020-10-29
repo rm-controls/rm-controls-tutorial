@@ -38,7 +38,7 @@
   # 加载环境变量
   source devel/setup.bash
   ```
-# 不同机器人上使用同一套```RM_BASE```指南
+# 不同机器人上使用同一套RM_BASE指南
 在RM_BASE中，只需修改几个配置文件，便可实现对不同机器人的控制。
 ## yaml文件
 yaml文件所在目录：```~/RM-Software-master/rm_ws/src/rm_bringup/config```下的```joint_param.yaml```和```standard.yaml```
