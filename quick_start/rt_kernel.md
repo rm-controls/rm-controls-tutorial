@@ -64,9 +64,11 @@ RT-Preempt Patch是在Linux社区kernel的基础上，加上相关的补丁，�
     ```bash
     CONFIG_DEBUG_INFO=n #阻止编译产debug文件
     make -j`nproc` && make -j`nproc` bindeb-pk #编译并打包
-    #'nproc'为cpu线程数，使用nproc命令可查看
-    #如cpu为4线程，则make -j'nproc'=make -j4
     ```
+
+    > [!Tip]
+    >
+    >'nproc'为cpu线程数，使用nproc命令可查看，如cpu为4线程，则make -j'nproc'=make -j4
 
     然后你将获得
     ```bash

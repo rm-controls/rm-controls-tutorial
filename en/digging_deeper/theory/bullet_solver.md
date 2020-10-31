@@ -24,7 +24,7 @@ Two algorithms:
 
 # Model derivation
 Air resistance is proportional to speed, and the target point moves at a constant speed.
-2D Model: In the xz plane, assuming that the bullet launching point is the coordinate origin, the actual position of the bullet is equivalent to a vector in the xoz plane.
+**2D Model**: In the xz plane, assuming that the bullet launching point is the coordinate origin, the actual position of the bullet is equivalent to a vector in the xoz plane.
 ![BEgFbT.png](https://s1.ax1x.com/2020/10/23/BEgFbT.png)
 Use to represent the component of the bullet position vector in the X direction, $\vec{v_x}, \vec{v_z}$ represent the component of the bullet velocity on the x axis and z axis, respectively,and use $\vec{z}$ to represent the component of the bullet position vector in the z direction; $v_0$ represents the initial launch velocity of the bullet, k is the air resistance coefficient, g is the acceleration of gravity, m is the weight of the bullet, and $f_x$ is the position of the bullet. The component of air resistance in the X direction.Based on physical knowledge:
 $$\vec{f_x}=-k\vec{v_x}=m\frac{d\vec{v_x}}{dt}\tag{1}$$
@@ -43,7 +43,7 @@ Solutions have to:
 $$z=\frac km\left(v_{z_0}+\frac{mg}k\right)\left(1-e^{-\frac kmt}\right)-\frac{mg}kt\tag{5}$$
 Target point motion model: Suppose the starting position of the target point is $\left(x_{t_0}, z_{t_0}\right)$, The speed of the target point in the x-axis direction is $v_{tx}$, the speed in the z-axis direction is $v_{tz}$, the component of the actual position of the target point in the x-axis direction is $x_t$, in the z-axis The component of the direction is $z_t$.
 $$x_t=x_{t_0}+v_{tx}t\\z_t=z_{t_0}+v_{tz}t$$ 
-Based on the derivation of the above 2D model, the movement model of the bullet and the target point in the Y direction under the 3D model can be obtained:
+Based on the derivation of the above 2D model, the movement model of the bullet and the target point in the Y direction under the **3D model** can be obtained:
 $$ Y = \frac mkv_{y_0}(1-e^{-\frac kmt})$$ $$ y_t = y_{t_0} + v_{ty}t$$
 
 # Code
@@ -88,7 +88,7 @@ rt_bullet_z = (1 / this->resistance_coff_)
 rt_target_x += this->target_dx_ * this->dt_;
 rt_target_y += this->target_dy_ * this->dt_;
 ```
-Please refer to the bullet_solver.cpp file for the specific implementation of all algorithms.
+Please refer to the **bullet_solver.cpp** file for the specific implementation of all algorithms.
 
 # Test program
 ## 1、Include header file
@@ -106,7 +106,7 @@ int main(int argc, char **argv) {
   Approx2DSolver<double> approx2d(0.1, 9.8, 0.01, 0.01, 3.);
   Iter3DSolver<double> iter3d(0.1, 9.8, 0.01, 0.0001, 3.);
   Approx3DSolver<double> approx3d(0.1, 9.8, 0.01, 0.0001, 3.);
-```
+  ```
   - Iter2DSolver: Iterative algorithm of 2D model
   - Approx2DSolver: Velocity superposition algorithm for 2D models
   - Iter3DSolver: Iterative algorithm of 3D model
@@ -128,7 +128,7 @@ Take the iterative algorithm of the 3D model as an example
   double vel_3d[3] = {0, 1, 0};
   iter3d.setBulletSpeed(bullet_speed);
   iter3d.setTarget(pos_3d, vel_3d);
-```
+  ```
   - Customized initial launch angle : angle_init
   - The calculated launch angle : angle_solved
   - Initial bullet launch speed : bullet_speed
