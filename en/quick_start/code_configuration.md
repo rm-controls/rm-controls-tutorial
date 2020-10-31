@@ -30,7 +30,7 @@ After installing ROS, install the required dependency packages
 
 Common problem：
 
-During initialization，If there is a problem```Unable to read remote warehouse. Please confirm that you have the correct access rights and that the warehouse exists```，Please refer to the solution](https://blog.csdn.net/qq_36770641/article/details/88638573) 
+During initialization，If there is a problem```Unable to read remote warehouse. Please confirm that you have the correct access rights and that the warehouse exists```，Please refer to [the solution](https://blog.csdn.net/qq_36770641/article/details/88638573) 
 
 + Compile
 
