@@ -24,7 +24,7 @@
 
 # 模型推导
 空气阻力与速度成正比，目标点以恒定速度运动
-**2D子弹运动模型**：在xz平面内，假设以子弹子弹发射点为坐标原点，则子弹的实际位置相当于在xoz平面内的一个矢量。
+2D子弹运动模型：在xz平面内，假设以子弹子弹发射点为坐标原点，则子弹的实际位置相当于在xoz平面内的一个矢量。
 ![BEgFbT.png](https://s1.ax1x.com/2020/10/23/BEgFbT.png)
 用表示子弹位置矢量在X方向上的分量，$\vec{v_x}、\vec{v_z}$分别表示子弹速度在x轴、z轴的分量，用$\vec{z}$表示子弹位置矢量在z方向上的分量；$v_0$表示子弹发射初速度， k为空气阻力系数，g为重力加速度，m表示子弹重量，$f_x$表示子弹所受空气阻力在X方向上的分量，根据物理知识知：
 $$\vec{f_x}=-k\vec{v_x}=m\frac{d\vec{v_x}}{dt}\tag{1}$$
@@ -42,7 +42,7 @@ $$\frac{dv_z}{dt}+\frac kmv_z+g=0\tag{4}$$
 $$z=\frac km\left(v_{z_0}+\frac{mg}k\right)\left(1-e^{-\frac kmt}\right)-\frac{mg}kt\tag{5}$$
 目标点运动模型：设目标点的起始位置为$\left(x_{t_0} , z_{t_0}\right)$，目标点在 x 轴方向上的速度为$v_{tx}$，在 z 轴方向上的速度为$v_{tz}$，目标点实际位置在 x 轴方向的分量为$x_t$，在 z 轴方向的分量为$z_t$。跟据匀速直线运动的公式可得：
 $$x_t=x_{t_0}+v_{tx}t\\z_t=z_{t_0}+v_{tz}t$$   
-基于上述2D模型的推导，可以得到**3D模型**下子弹和目标点在Y方向的运动模型：
+基于上述2D模型的推导，可以得到3D模型下子弹和目标点在Y方向的运动模型：
 $$ Y = \frac mkv_{y_0}(1-e^{-\frac kmt})$$  $$ y_t = y_{t_0} + v_{ty}t$$
 
 # 代码实现 
@@ -87,7 +87,7 @@ rt_bullet_z = (1 / this->resistance_coff_)
 rt_target_x += this->target_dx_ * this->dt_;
 rt_target_y += this->target_dy_ * this->dt_;
 ```
-所有算法具体实现请参考**bullet_solver.cpp**文件。
+所有算法具体实现请参考bullet_solver.cpp文件。
 
 # 测试程序
 ## 1、包含头文件
