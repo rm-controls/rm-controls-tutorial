@@ -48,7 +48,7 @@ $$ y = \frac mkv_{y_0}(1-e^{-\frac kmt})$$  $$ y_t = y_{t_0} + v_{t_y}t$$
 
 # 代码实现 
 ## 1、基类
-```C++
+```cpp
 template<typename T>
 class BulletSolver {
  public:
@@ -73,7 +73,7 @@ BulletSolver类是所有模型以及算法的基类，定义了实现求解子�
 - 输出发射角 output() &emsp;&emsp;参数：最终发射角
 
 ## 2、子弹运动模型
-```C++
+```cpp
 rt_bullet_rho = (1 / this->resistance_coff_) * bullet_v_rho
         * (1 - std::exp(-this->fly_time_ * this->resistance_coff_));
 
@@ -84,7 +84,7 @@ rt_bullet_z = (1 / this->resistance_coff_)
 ```
 
 ## 3、目标点运动模型
-```C++
+```cpp
 rt_target_x += this->target_dx_ * this->dt_;
 rt_target_y += this->target_dy_ * this->dt_;
 ```
@@ -92,7 +92,7 @@ rt_target_y += this->target_dy_ * this->dt_;
 
 # 测试程序
 ## 1、包含头文件
-```C++
+```cpp
 #include <iostream>
 #include "bullet_solver.h"
 ```
@@ -100,7 +100,7 @@ rt_target_y += this->target_dy_ * this->dt_;
 <ber/>
 
 ## 2、创建类对象实例
-```C++
+```cpp
 int main(int argc, char **argv) {
   Iter2DSolver<double> iter2d(0.1, 9.8, 0.01, 0.0001, 3.);
   Approx2DSolver<double> approx2d(0.1, 9.8, 0.01, 0.01, 3.);
@@ -121,7 +121,7 @@ int main(int argc, char **argv) {
 
 ## 3、设置其他参数
 这里以3D模型的迭代算法为例
-```C++
+```cpp
   double angle_init[2]{}, angle_solved[2]{};
   double bullet_speed = 18.;
   double pos_3d[3] = {7, 0, 1};
@@ -136,7 +136,7 @@ int main(int argc, char **argv) {
 - 目标点在x、y、z方向上的速度 vel_3d
 
 ## 4、计算并输出发射角
-```C++
+```cpp
   iter3d.solve(angle_init);
   iter3d.output(angle_solved);
   std::cout << "yaw:" << angle_solved[0] << " pitch:" << angle_solved[1] << std::endl;
