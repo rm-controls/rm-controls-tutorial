@@ -1,29 +1,5 @@
 # IDE configuration
 
-## Install CLion
-
-1. [Download the tarball](https://www.jetbrains.com/clion/download/) **.tar.gz** .
-
-2. Unpack the downloaded **CLion-*.tar.gz** archive. The recommended extract directory is /opt:
-
-   ```bash
-   sudo tar xvzf CLion-*.tar.gz -C /opt/
-   ```
-
-   > [!Warning]
-   >
-   >  Do not extract the tarball over an existing installation to avoid conflicts.  Always  extract to a clean directory.                         
-
-3. Execute the **CLion.sh** from **bin** subdirectory to run CLion:
-
-   ```bash
-   sh /opt/clion-*/bin/clion.sh
-   ```
-
-   When you run CLion for the first time, some steps are required  to complete the installation, customize your instance, and start working with the IDE.     
-
-   For more information, see [Run CLion for the first time](https://www.jetbrains.com/help/clion/run-for-the-first-time.html).
-
 ## Configure the IDE
 
 1. Create a C++ Executable project. You can set the location and language standard of the new project.
