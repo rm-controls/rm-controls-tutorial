@@ -195,7 +195,7 @@ int main(int argc, char **argv) {
 
 * approx3d(`Approx3DSolver`)
 
-   3D模型的速度叠加算法
+   3D模型的速度叠加算法类对象实例
 
 ## 3、设置参数
 这里以3D模型的迭代算法为例

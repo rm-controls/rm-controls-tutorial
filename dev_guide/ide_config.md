@@ -1,29 +1,5 @@
 # IDE 配置
 
-## 安装 CLion
-
-1. [下载安装包](https://www.jetbrains.com/clion/download/) **.tar.gz** 。
-
-2. 解压下载好的 **CLion-*.tar.gz** 压缩包。 推荐的安装目录是 /opt: 
-
-   ```bash
-   sudo tar xvzf CLion-*.tar.gz -C /opt/
-   ```
-
-   > [!Warning]
-   >
-   > 为了避免冲突，不要在已有文件的目录下解压，应确保解压到一个空目录。
-
-3. 运行在 **bin** 目录下的**CLion.sh** :
-
-   ```bash
-   sh /opt/clion-*/bin/clion.sh
-   ```
-
-   当第一次运行CLion时，需要一些步骤来完成安装、自定义实例和开始使用IDE。    
-
-   更多相关信息, 可参考[第一次运行CLion](https://www.jetbrains.com/help/clion/run-for-the-first-time.html)。
-
 ## 配置IDE
 
 1. 创建C++可执行项目。可以设置新项目的位置和语言标准。
