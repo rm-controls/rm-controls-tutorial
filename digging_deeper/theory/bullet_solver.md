@@ -91,23 +91,23 @@ BulletSolver类是所有模型以及算法的基类，定义了实现求解子�
 
    子弹初速度
 
-* resistance_coff_(`T`)
+* resistance_coff_
 
    空气阻力系数
 
-* g_(`T`)
+* g_
 
    重力加速度
 
-* dt_(`T`)
+* dt_
 
    循环迭代时间间隔
 
-* timeout_(`T`)
+* timeout_
 
    退出循环的条件，当计算到子弹在空中飞行的时间超过此值时将退出循环
 
-* delay_(`T`)
+* delay_
 
    枪管发射延时
 
@@ -121,20 +121,21 @@ rt_bullet_z = (1 / this->resistance_coff_)
       * (1 - std::exp(-this->fly_time_ * this->resistance_coff_))
       - this->fly_time_ * this->g_ / this->resistance_coff_;        
 ```
+
 ### 变量说明
 * bullet_v_rho(`T`)
 
    子弹速度$v_x$与$v_y$的叠加
 
-* rt_bullet_rho(`T`)
+* rt_bullet_rho
 
   子弹实际位置在x轴分量和在y轴分量的叠加
 
-* rt_bullet_z(`T`)
+* rt_bullet_z
 
    子弹实际位置在z轴分量
 
-* fly_time_(`T`)
+* fly_time_
 
    子弹的飞行时间
 
@@ -149,15 +150,15 @@ rt_target_y += this->target_dy_ * this->dt_;
 
    目标点实际位置在x轴分量
 
-* rt_target_y(`T`)
+* rt_target_y
 
    目标点实际位置在y轴分量
 
-* target_dx_(`T`)
+* target_dx_
 
    目标点速度在x轴分量
 
-* target_dy_(`T`)
+* target_dy_
 
    目标点速度在y轴分量
 
