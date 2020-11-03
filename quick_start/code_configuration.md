@@ -1,9 +1,12 @@
 # 安装
 ## 软件依赖配置
-默认安装ROS melodic，可参考ROS Wiki的安装教程安装ROS
-- [Robot Operating System (ROS)](http://wiki.ros.org/cn) (middleware for robotics),
+默认安装ROS melodic，可参考ROS Wiki的[安装教程](http://wiki.ros.org/cn)安装ROS
+- apriltag-ros
+- behaviortree-cpp-v3
 
-安装ROS后，安装所需依赖包。
+安装ROS后，还需要下列依赖包。
+- apriltag-ros
+- behaviortree-cpp-v3
 
     sudo apt-get install ros-melodic-apriltag-ros              \
                          ros-melodic-behaviortree-cpp-v3       \
