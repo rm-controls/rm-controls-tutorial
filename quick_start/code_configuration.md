@@ -1,8 +1,6 @@
 # 安装
 ## 软件依赖配置
 默认安装ROS melodic，可参考ROS Wiki的[安装教程](http://wiki.ros.org/cn)安装ROS
-- apriltag-ros
-- behaviortree-cpp-v3
 
 安装ROS后，还需要下列依赖包。
 - apriltag-ros
