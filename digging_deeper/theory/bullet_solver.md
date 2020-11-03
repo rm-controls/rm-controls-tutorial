@@ -48,7 +48,7 @@ $$x_t=x_{t_0}+v_{t_x}t\\z_t=z_{t_0}+v_{t_z}t$$
 $$ y = \frac mkv_{y_0}(1-e^{-\frac kmt})$$  $$ y_t = y_{t_0} + v_{t_y}t$$
 
 # 代码实现 
-## 1、基类
+## 基类
 ```cpp
 template<typename T>
 class BulletSolver {
@@ -69,7 +69,7 @@ class BulletSolver {
 ```
 BulletSolver类是所有模型以及算法的基类，定义了实现求解子弹发射角度的算法函数接口，和空气阻力系数、重力加速度、发射延时、子弹速度等成员变量。
 
-### 函数功能
+#### 函数功能
 * setTarget() 
 
    设置目标点，用于初始化目标点初始位置及速度
@@ -86,7 +86,7 @@ BulletSolver类是所有模型以及算法的基类，定义了实现求解子�
 
   输出，用于输出最终枪管角度
 
-### 变量说明
+#### 变量说明
 * bullet_speed_(`T`)
 
    子弹初速度
@@ -111,7 +111,7 @@ BulletSolver类是所有模型以及算法的基类，定义了实现求解子�
 
    枪管发射延时
 
-## 2、子弹运动模型
+## 子弹运动模型
 ```cpp
 rt_bullet_rho = (1 / this->resistance_coff_) * bullet_v_rho
         * (1 - std::exp(-this->fly_time_ * this->resistance_coff_));
@@ -122,7 +122,7 @@ rt_bullet_z = (1 / this->resistance_coff_)
       - this->fly_time_ * this->g_ / this->resistance_coff_;        
 ```
 
-### 变量说明
+#### 变量说明
 * bullet_v_rho(`T`)
 
    子弹速度$v_x$与$v_y$的叠加
@@ -139,13 +139,13 @@ rt_bullet_z = (1 / this->resistance_coff_)
 
    子弹的飞行时间
 
-## 3、目标点运动模型
+## 目标点运动模型
 ```cpp
 rt_target_x += this->target_dx_ * this->dt_;
 rt_target_y += this->target_dy_ * this->dt_;
 ```
 
-### 变量说明
+#### 变量说明
 * rt_target_x(`T`)
 
    目标点实际位置在x轴分量
@@ -165,14 +165,14 @@ rt_target_y += this->target_dy_ * this->dt_;
 所有算法具体实现请参考[bullet_solver.cpp]()
 
 # 测试程序
-## 1、包含头文件
+## 包含头文件
 ```cpp
 #include <iostream>
 #include "bullet_solver.h"
 ```
 头文件中包含所有类、函数的定义。
 
-## 2、创建类对象实例
+## 创建类对象实例
 ```cpp
 int main(int argc, char **argv) {
   Iter2DSolver<double> iter2d(0.1, 9.8, 0.01, 0.0001, 3.);
@@ -181,7 +181,7 @@ int main(int argc, char **argv) {
   Approx3DSolver<double> approx3d(0.1, 9.8, 0.01, 0.0001, 3.);
   ```
 
-### 变量说明
+#### 变量说明
 * iter2d(`Iter2DSolver`)
 
    2D模型的迭代算法类对象实例
@@ -198,7 +198,7 @@ int main(int argc, char **argv) {
 
    3D模型的速度叠加算法类对象实例
 
-## 3、设置参数
+## 设置参数
 这里以3D模型的迭代算法为例
 ```cpp
   double angle_init[2]{}, angle_solved[2]{};
@@ -209,7 +209,7 @@ int main(int argc, char **argv) {
   iter3d.setTarget(pos_3d, vel_3d);
   ```
 
-  ### 参数说明
+  #### 参数说明
   * angle_init(`double`)
 
      自定义的初始发射角度
@@ -230,7 +230,7 @@ int main(int argc, char **argv) {
 
    目标点在x、y、z方向上的速度
 
-## 4、计算并输出发射角
+## 计算并输出发射角
 ```cpp
   iter3d.solve(angle_init);
   iter3d.output(angle_solved);

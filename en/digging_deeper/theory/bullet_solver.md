@@ -48,7 +48,7 @@ Based on the derivation of the above 2D model, use y to represent the component 
 $$ y = \frac mkv_{y_0}(1-e^{-\frac kmt})$$ $$ y_t = y_{t_0} + v_{t_y}t$$
 
 # Code
-## 1、Base class
+## Base class
 ```cpp
 template<typename T>
 class BulletSolver {
@@ -69,7 +69,7 @@ class BulletSolver {
 ```
 The BulletSolver class is the base class of all models and algorithms. It defines the algorithm function interface for solving the bullet launch angle, and member variables such as air drag coefficient, gravitational acceleration, launch delay, and bullet velocity.
 
-### Function description
+#### Function description
 * setTarget() 
 
    Set the target point, used to initialize the initial position and speed of the target point
@@ -86,7 +86,7 @@ The BulletSolver class is the base class of all models and algorithms. It define
 
    Output, used to output the final barrel angle
 
-### Variable description
+#### Variable description
 * bullet_speed_(`T`)
 
    Initial bullet velocity
@@ -111,7 +111,7 @@ The BulletSolver class is the base class of all models and algorithms. It define
 
    Barrel launch delay
 
-## 2、Bullet motion model
+## Bullet motion model
 ```cpp
 rt_bullet_rho = (1 / this->resistance_coff_) * bullet_v_rho
         * (1 - std::exp(-this->fly_time_ * this->resistance_coff_));
@@ -122,7 +122,7 @@ rt_bullet_z = (1 / this->resistance_coff_)
       - this->fly_time_ * this->g_ / this->resistance_coff_;        
 ```
 
-### Variable description
+#### Variable description
 * bullet_v_rho(`T`)
 
    The superposition of bullet velocity $v_x$ and $v_y$
@@ -139,13 +139,13 @@ rt_bullet_z = (1 / this->resistance_coff_)
 
    Bullet flight time
 
-##  3、Target point motion model
+## Target point motion model
 ```cpp
 rt_target_x += this->target_dx_ * this->dt_;
 rt_target_y += this->target_dy_ * this->dt_;
 ```
 
-### Variable description
+#### Variable description
 * rt_target_x(`T`)
 
    The actual position of the target point on the x-axis component
@@ -165,14 +165,14 @@ rt_target_y += this->target_dy_ * this->dt_;
 Please refer to the [bullet_solver.cpp]() for the specific implementation of all algorithms.
 
 # Test program
-## 1、Include header file
+## Include header file
 ```cpp
 #include <iostream>
 #include "bullet_solver.h"
 ```
 The header file contains the definitions of all classes and functions.
 
-## 2、Create class object
+## Create class object
 ```cpp
 int main(int argc, char **argv) {
   Iter2DSolver<double> iter2d(0.1, 9.8, 0.01, 0.0001, 3.);
@@ -181,7 +181,7 @@ int main(int argc, char **argv) {
   Approx3DSolver<double> approx3d(0.1, 9.8, 0.01, 0.0001, 3.);
   ```
 
-  ### Variable description
+  #### Variable description
   * iter2d(`Iter2DSolver`)
 
      Object instance of iterative algorithm class of 2D model
@@ -198,7 +198,7 @@ int main(int argc, char **argv) {
 
      3D model speed superposition algorithm class object instance
 
-## 3、Set parameters
+## Set parameters
 Take the iterative algorithm of the 3D model as an example
 ```cpp
   double angle_init[2]{}, angle_solved[2]{};
@@ -209,7 +209,7 @@ Take the iterative algorithm of the 3D model as an example
   iter3d.setTarget(pos_3d, vel_3d);
   ```
 
-  ### Parameter Description
+  #### Parameter Description
   * angle_init(`double`)
 
      Customized initial launch angle
@@ -230,7 +230,7 @@ Take the iterative algorithm of the 3D model as an example
 
      The speed of the target point in the x, y, z direction
 
-## 4、Calculate and output the launch angle
+## Calculate and output the launch angle
 ```cpp
   iter3d.solve(angle_init);
   iter3d.output(angle_solved);
