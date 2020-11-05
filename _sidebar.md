@@ -7,7 +7,7 @@
 * 快速入门
   
   * [系统安装](quick_start/installation.md)
-* [在PC上的简单部署](quick_start/deploy_pc.md)
+* [在PC上的部署](quick_start/deploy_pc.md)
   * [在机器人上的部署](quick_start/deploy_robot.md)
   
 * 开发指南
