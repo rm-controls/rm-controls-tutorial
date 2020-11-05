@@ -21,6 +21,8 @@ rm_base
 └── package.xml
 ```
 
+rm_base通过blackboard类来加载和记录电机、IMU、GPIO、插件等信息。
+
 在该模块的核心运行节点`rm_base`中，创建所需模块的插件（如底盘、云台）并加载参数到ros参数服务器后，即可正常执行通信任务。
 
 ## 编译与运行
