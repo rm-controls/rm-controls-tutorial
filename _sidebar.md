@@ -5,13 +5,15 @@
   * [软件框架](software_framework.md)
   
 * 快速入门
-  * [系统及依赖安装](quick_start/installation.md)
-  * [系统修改（实时性）](quick_start/rt_kernel.md)
-  * [代码配置和编译](quick_start/code_configuration.md)
+  
+  * [系统安装](quick_start/installation.md)
+* [在PC上的简单部署](quick_start/deploy_pc.md)
+  * [在机器人上的部署](quick_start/deploy_robot.md)
   
 * 开发指南
   * [配置IDE](dev_guide/ide_config.md)
-  * [代码规范](dev_guide/code_style.md)
+  * [配置内核](dev_guide/rt_kernel.md)
+  * [代码规范](dev_guide/code_style)
   
 * Digging deeper
   
