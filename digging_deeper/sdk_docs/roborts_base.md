@@ -33,15 +33,15 @@ rm_base
 
 
 
-初始化：从参数服务器中获取joint、IMU、GPIO和plugins的信息，并加载到blackboard里保存。
++ 初始化：从参数服务器中获取joint、IMU、GPIO和plugins的信息，并加载到blackboard里保存。
 
 
 
-数据接收：从can总线上获取数据并解码，更新blackboard里面的内容。
++ 数据接收：从can总线上获取数据并解码，更新blackboard里面的内容。
 
 
 
-数据发送：从blackboard取出数据进行编码，然后发送到can总线上。
++ 数据发送：从blackboard取出数据进行编码，然后发送到can总线上。
 
 
 ## 编译与运行
