@@ -67,17 +67,6 @@ rm_plugins
 
 
 
-## 对各Topic的功能的简述
-
-|      话题      |  发布消息  |                       功能                       |
-| :------------: | :--------: | :----------------------------------------------: |
-| “/chassis_cmd” | ChassisCmd |                发布底盘的运行状态                |
-| "/gimbal_cmd"  | GimbalCmd  |   发布底盘的运行状态，pitch轴和yaw轴的运动速率   |
-|  "shoot_cmd"   |  ShootCmd  | 发布发射机构的运动状态，弹丸发射数量，速度，频率 |
-|   "vel_cmd"    |   Twist    |           发布底盘运动的角速度和线速度           |
-
-各消息类型的具体情况可见“rm_msgs/msg”路径下对应的文件。
-
 
 
 ## 对基类的说明
@@ -97,19 +86,15 @@ rm_plugins
 
 ### 1、主要成员
 
-+ computerData：使用逆运动学，由关节数据(电机速度)，计算底盘运动数据和Odom坐标变换。
-+ fKine：使用正向运动学，在底盘框架下，根据速度计算关节数据（电机速度）。
-+ getVelData：获取底盘运动时，x,y,z方向上的线速度。
-+ chassisCmdCB：底盘命令回调函数。
 + state_：枚举型变量，含5种取值（PASSIVE，RAW，FOLLOW，TWIST，GYRO），表示运动状态。
-+ chass_cmd_sub_：ROS订阅器，启动init函数后，订阅"/chassis_cmd"话题所发布的消息。
-+ vel_cmd_sub_：ROS订阅器，启动init函数后，订阅“/vel_cmd_sub”话题所发布的消息。
++ chass_cmd_sub_：ROS订阅器，启动init函数后，订阅"/chassis_cmd"话题所发布的消息（ChassiaCmd，底盘的运动状态）。
++ vel_cmd_sub_：ROS订阅器，启动init函数后，订阅“/vel_cmd_sub”话题所发布的消息（Twist，底盘运动的线速度和角速度）。
 
  
 
 ### 2、底盘状态机
 
-当底盘状态广播器所发布的状态消息改变时，chassis_cmd_sub_接收到消息后，会进入chassisCmdCB函数，改变state__的值，此时，在run函数中，便会启动相应状态所对应功能的函数。
+当底盘状态广播器所发布的状态消息改变时，chassis_cmd_sub_接收到消息后，会进入chassisCmdCB回调函数，改变state__的值，此时，在run函数中，便会启动相应状态所对应功能的函数。
 
 - 当state_的值为PASSIVE时，会启动passive函数，此时底盘所有电机断电。
 
@@ -127,19 +112,15 @@ rm_plugins
 
 ### 1、基本成员
 
-+ computerData：根据关节（电机）数据，计算云台数据并更新tf坐标变换。
-
-+ cmdCB：云台命令回调函数。
-
 + state_：枚举型变量，含3种取值（PASSIVE，RATE，TRACK），表示运动状态。
 
-+ cmd_sub_：ROS订阅器，启动init函数后，订阅“/Gimbal_cmd”话题所发布的消息。
++ cmd_sub_：ROS订阅器，启动init函数后，订阅“/Gimbal_cmd”话题所发布的消息（GimbalCmd，云台的运动状态，pitch轴和yaw轴的运动速率）。
 
   
 
 ### 2、云台状态机
 
-当云台状态广播器所发布的状态消息改变时，cmd_sub_接收到消息后，会进入cmdCB函数，改变state__的值，此时，在run函数中，便会启动相应状态所对应功能的函数。
+当云台状态广播器所发布的状态消息改变时，cmd_sub_接收到消息后，会进入云台回调函数，改变state__的值，此时，在run函数中，便会启动相应状态所对应功能的函数。
 
 + 当state_的值为PASSIVE时，执行run函数后，会启动passive函数，此时，控制yaw轴和pitch轴的电机都会断电。
 
@@ -159,17 +140,15 @@ rm_plugins
 
 + setSpeed：设置弹丸的发射速度。
 
-+ cmdCB：发射命令回调函数。
-
 + state_：枚举型变量，含5种取值（PASSIVE，FEED、READY、PUSH、BLOCK），表示运动状态。
 
-+ cmd_sub_：ROS订阅器，启动init函数后，订阅“/Shooter_cmd”话题所发布的消息。
++ cmd_sub_：ROS订阅器，启动init函数后，订阅“/Shooter_cmd”话题所发布的消息（ShootCmd，发射机构的运动状态，弹丸发射数量，速度，频率）。
 
   
 
 ### 2、发射机构状态机说明 
 
-当发射机构状态广播器所发布的状态消息改变时，cmd_sub_接收到消息后，会进入cmdCB函数。
+当发射机构状态广播器所发布的状态消息改变时，cmd_sub_接收到消息后，会进入发射机构的回调函数。
 
 若所发布的消息中的mode为0，则state_的值修改为PASSIVE。
 
