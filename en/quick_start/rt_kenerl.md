@@ -63,7 +63,7 @@ RT-Preempt Patch is based on the Linux community kernel, plus related patches to
 1. Compile and install the kernel
     ```bash
     CONFIG_DEBUG_INFO=n #Prevent compilation of debug files
-    make -j`nproc` && make -j`nproc` bindeb-pk #Compile and package
+    make -j`nproc` && make -j`nproc` bindeb-pkg #Compile and package
     ```
 
     > [!Tip]

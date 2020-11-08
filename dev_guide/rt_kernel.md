@@ -63,7 +63,7 @@ RT-Preempt Patch是在Linux社区kernel的基础上，加上相关的补丁，�
 1. 编译并安装内核
     ```bash
     CONFIG_DEBUG_INFO=n #阻止编译产debug文件
-    make -j`nproc` && make -j`nproc` bindeb-pk #编译并打包
+    make -j`nproc` && make -j`nproc` bindeb-pkg #编译并打包
     ```
 
     > [!Tip]
