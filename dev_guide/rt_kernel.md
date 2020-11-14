@@ -58,6 +58,19 @@ RT-Preempt Patch是在Linux社区kernel的基础上，加上相关的补丁，�
 
 7. 取消选择Check for stack overflows，本来就没有选择可以忽略
 
+8. 按下‘/’搜索DEBUG_INFO
+![图6](https://ftp.bmp.ovh/imgs/2020/11/0fe2f71cd666f178.png)
+
+9. 按下‘1’
+![图7](https://ftp.bmp.ovh/imgs/2020/11/94f53ecb38a69642.png)
+
+10. 在Compile the kernel with debug info选项上按下‘n’，取消编译时产生debug文件
+![图8](https://ftp.bmp.ovh/imgs/2020/11/f90a6d57f2800bf1.png)
+
+    > [!Tip]
+    >
+    >编译内核会产生一个极大的debug文件，实际安装时无需使用该文件，故可直接阻止其生成
+
 ## 内核编译
 
 1. 编译并安装内核
