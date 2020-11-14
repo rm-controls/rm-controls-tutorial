@@ -5,6 +5,7 @@ RT-Preempt Patch是在Linux社区kernel的基础上，加上相关的补丁，�
 ## 下载内核及rt补丁
 
 1. 新建文件夹，用于存放内核及补丁
+
     ```bash
     mkdir ~/rt-kernel && cd ~/rt-kernel
     ```
@@ -22,6 +23,7 @@ RT-Preempt Patch是在Linux社区kernel的基础上，加上相关的补丁，�
     >内核版本与补丁版本需要严格对应。
 
 4. 打补丁
+
     ```bash
     sudo apt-get install libncurses-dev #安装依赖项
     tar -xzvf linux-5.6.19.tar.gz #解压内核
@@ -37,35 +39,44 @@ RT-Preempt Patch是在Linux社区kernel的基础上，加上相关的补丁，�
 ## 配置内核
 
 1. 打开内核配置界面
+
     ```bash
     make menuconfig
     ```
 
 2. 选General setup，如果内核版本老一点没有下一步中的选项的话选Processor Type and features
-![图1](https://ftp.bmp.ovh/imgs/2020/10/489e6a9ff0a684f1.png)
+
+    ![图1](https://ftp.bmp.ovh/imgs/2020/10/489e6a9ff0a684f1.png)
 
 3. 选Preemption Model (Voluntary Kernel Preemption (Desktop))
-![图2](https://ftp.bmp.ovh/imgs/2020/10/1b18aa2359246159.png)
+
+    ![图2](https://ftp.bmp.ovh/imgs/2020/10/1b18aa2359246159.png)
 
 4. 选Fully Preemptible Kernel (RT)，然后一直按esc键返回至主页面
-![图3](https://ftp.bmp.ovh/imgs/2020/10/66924a6b92b55753.png)
+
+    ![图3](https://ftp.bmp.ovh/imgs/2020/10/66924a6b92b55753.png)
 
 5. 选Kernel hacking
-![图4](https://ftp.bmp.ovh/imgs/2020/10/e1c825922419dbb8.png)
+
+    ![图4](https://ftp.bmp.ovh/imgs/2020/10/e1c825922419dbb8.png)
 
 6. 选Memory Debugging
-![图5](https://ftp.bmp.ovh/imgs/2020/10/4b59c4383bb00e15.png)
+
+    ![图5](https://ftp.bmp.ovh/imgs/2020/10/4b59c4383bb00e15.png)
 
 7. 取消选择Check for stack overflows，本来就没有选择可以忽略
 
 8. 按下‘/’搜索DEBUG_INFO
-![图6](https://ftp.bmp.ovh/imgs/2020/11/0fe2f71cd666f178.png)
+
+    ![图6](https://ftp.bmp.ovh/imgs/2020/11/0fe2f71cd666f178.png)
 
 9. 按下‘1’
-![图7](https://ftp.bmp.ovh/imgs/2020/11/94f53ecb38a69642.png)
+
+    ![图7](https://ftp.bmp.ovh/imgs/2020/11/94f53ecb38a69642.png)
 
 10. 在Compile the kernel with debug info选项上按下‘n’，取消编译时产生debug文件
-![图8](https://ftp.bmp.ovh/imgs/2020/11/f90a6d57f2800bf1.png)
+
+    ![图8](https://ftp.bmp.ovh/imgs/2020/11/f90a6d57f2800bf1.png)
 
     > [!Tip]
     >
