@@ -8,7 +8,7 @@ CLion的下载以及基本配置可参考[Install CLion](https://www.jetbrains.c
 
 ![save_actions](https://s3.ax1x.com/2020/11/16/Dk9fXD.png)
 
-+ 转到 **File | Settings | Editor | Code Style | C/C++**，点击右侧的 **Set from...** 并选择 **Google**
++ 转到 **File | Settings | Editor | Code Style | C/C++**，点击右侧的     **Set from...**  并选择  **Google**  
 
 
 ## ROS 配置
