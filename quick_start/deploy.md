@@ -29,11 +29,11 @@
 
     具体参见[官方文档](https://rm-static.djicdn.com/tem/17348/RoboMaster%20C620%E6%97%A0%E5%88%B7%E7%94%B5%E6%9C%BA%E8%B0%83%E9%80%9F%E5%99%A8%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E%EF%BC%88%E4%B8%AD%E8%8B%B1%E6%97%A5%EF%BC%89V1.01.pdf)
 
-### 修改can物理地址
+### 修改串口物理地址
 
-1. pc连接usb2xxx
+1. pc连接usbtoxxx.
 
-2. 查询can0和can1物理地址
+2. 查询usbImu和usbDbus物理地址
 
     ```bash
     ls /sys/class/tty/ttyUSB* -l
@@ -43,16 +43,16 @@
 
     ![](https://ftp.bmp.ovh/imgs/2020/11/7f51b4bda7bb8037.png)
 
-    其中，'3-2.3:1.0'为can0的物理地址
+    其中，'3-2.3:1.0'为usbImu的物理地址
 
-3. 修改can0和can1物理地址
+3. 修改usbImu和usbDbus物理地址
 
     ```bash
     cd /home/chenzheng/RM-Software/rm_ws/src/rm_bringup/scripts/udev/
     vim rm.rules
     ```
 
-    修改KERNELS=="${can物理地址}"
+    修改KERNELS=="${usb物理地址}"
 
     ```bash
     ./create_udev_rules.sh
