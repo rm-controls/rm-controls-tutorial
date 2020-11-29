@@ -15,7 +15,7 @@
 
     ```
     
-    git clone https://github.com/QiayuanLiao/RM-Software.git
+    git clone git@github.com:gdut-dynamic-x/rm_software.git
     
     ```
 
