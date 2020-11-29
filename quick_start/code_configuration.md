@@ -25,12 +25,22 @@
 
 + 初始化子模块
 
-    ```
+    电控代码：
     
+    ```
+    cd rm_software/
+    git submodule update --init rm_msgs/ rm_common/
+    
+    ```
+   
+    全套代码：
+
+    ```
     git submodule update --init --recursive 
     
     ```
-
+   
+    
 > [!Note]
 >
 >相机驱动和视觉算法两个节点以submodule形式管理。
