@@ -9,7 +9,9 @@
 ```
     sudo apt-get install ros-noetic-apriltag-ros              \
                          ros-noetic-behaviortree-cpp-v3       \
-                         ros-noetic-socketcan-interface
+                         ros-noetic-socketcan-interface       \
+                         ros-noetic-rosmon
+
 ```
 ## 从Git上拉取与编译
 + 从github下clone仓库代码
