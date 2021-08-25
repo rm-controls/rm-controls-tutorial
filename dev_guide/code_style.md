@@ -1,6 +1,6 @@
 # rm-controls Code Style Guidelines
 
-We use the [ROS C++ Style guide](http://wiki.ros.org/CppStyleGuide) for all C++ development and the [ROS Python Style guide](http://wiki.ros.org/PyStyleGuide) for Python.
+We use the [ROS C++ Style guide](http://wiki.ros.org/CppStyleGuide) for all C++ development and the [ROS Python Style guide](http://wiki.ros.org/PyStyleGuide) for Python, you can use [ros_best_pracitces](https://github.com/leggedrobotics/ros_best_practices) as a template.
 
 To ease your development, we recommend the automated code formatter ``clang-format`` with a ROS configuration - to use see below.
 
@@ -45,17 +45,8 @@ In addition rm-controls has some extra style preferences:
  - The ROS logging functionality is utilized and namespaced. i.e. ``ROS_INFO_NAMED(LOGNAME, "Starting listener...``.
    - This makes it easier to understand where output is coming from on the command line and allows for more fine-grained filtering of terminal output noise.
    - Your logging namespace is defined as a ``const`` variable. (eg: ``constexpr char LOGNAME[] = "robot_state";``)
-   - The use of the file name as the NAMED namespace is best practice, i.e. planning_scene.cpp would use ``"planning_scene"``
+   - The use of the file name as the NAMED namespace is best practice, i.e. rm_hw.cpp would use ``"rm_hw"``
    - Avoid using the package name as the namespace as this is already output by the logger
-
-## CMakeLists.txt
-
-rm-controls uses *one* folder for all headers from all of its modules: ``include/moveit``. To achieve this, install all headers to `${CATKIN_GLOBAL_INCLUDE_DESTINATION}` rather than using the normal `CATKIN_PACKAGE_INCLUDE_DESTINATION`:
-
-    install(DIRECTORY include/ DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION})
-
-This is rather non-standard for catkin - catkin would prefer to have headers of each ROS package in a separate folder,
-e.g. `include/moveit_core/...`, `include/moveit_ros_planning/...`, etc.
 
 ## pre-commit Formatting Checks
 
@@ -89,7 +80,7 @@ clang-format requires a configuration file in the root of your catkin workspace.
 
 Format a single file:
 
-    clang-format-10 -i -style=file MY_ROS_NODE.cpp
+    clang-format-10 -i -style=file MY_FLIE_NAME.cpp
 
 Format an entire directory recursively including subfolders:
 
@@ -105,40 +96,10 @@ Occasionally the auto formatting used by clang-format might not make sense e.g. 
 
 Use this sparingly though.
 
-### Emacs Editor Configuration
+### CLion IDE Configuration
 
-In your ``~/.emacs`` config file, add the following:
+Check [CLion IDE Configuration]() for more details.
 
-Format your source code if its in some directory such as the ``catkin_ws`` (feel free to change keywords catkin_ws):
-
-```
-(defun run-ros-clang-format ()
-"Runs clang-format on cpp,h files in catkin_ws/ and reverts buffer."
-(interactive)
-(and
-(string-match "/catkin_ws/.*\\.\\(h\\|cpp\\)$" buffer-file-name)
-(save-some-buffers 'no-confirm)
-(shell-command (concat "clang-format-10 -style=file -i " buffer-file-name))
-(message (concat "Saved and ran clang-format on " buffer-file-name))
-(revert-buffer t t t)
-))
-```
-
-Set a keyboard shortcut to run, such as F12
-
-    (global-set-key [f12] 'run-ros-clang-format)
-
-### QtCreator Editor Configuration
-
-Navigate to ``Tools`` > ``Options`` > ``Beautifier``
-On the ``General`` tab, enable auto format on file save, using ``ClangFormat``.
-On the ``Clang Format`` tab, configure ``clang-format-10`` as your executable and choose ``Use predefined style`` from ``File``.
-
-### Atom Editor Configuration
-
-Install the [clang-format](https://atom.io/packages/clang-format) package via the Atom package manager or ``apm install clang-format``.
-
-In the package settings set ``clang-format-10`` as your executable and point 'Style' to your ``.clang-format`` file.
 
 ## clang-tidy Linting
 
@@ -149,7 +110,7 @@ more modern, more readable, and less prone to common bugs.
 You can install clang-tidy and other clang related tools with
 `sudo apt install clang-tidy clang-tools`
 
-Similarly to clang-format, clang-tidy uses the configuration file [``.clang-tidy``](https://github.com/ros-planning/moveit/blob/master/.clang-tidy) that is found first when traversing the source folder hierarchy upwards. The MoveIt repo provides this file [here](https://github.com/ros-planning/moveit/blob/master/.clang-tidy).
+Similarly to clang-format, clang-tidy uses the configuration file [``.clang-tidy``](https://github.com/ros-planning/moveit/blob/master/.clang-tidy) that is found first when traversing the source folder hierarchy upwards. All rm-controls repo provides this file on repo root file.
 
 
 Unlike clang-format, clang-tidy needs to know the exact compiler options used to build your project.
