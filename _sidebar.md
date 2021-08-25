@@ -1,6 +1,6 @@
 
 * 概述
-  * [RM Software](rm_software.md)
+  * [rm-controls](rm-controls.md)
   * [硬件规格](hardware_specifications.md)
   * [软件框架](software_framework.md)
   
@@ -21,4 +21,3 @@
   * [理论](digging_deeper/theory/theory_lover.md)
   
     
-  

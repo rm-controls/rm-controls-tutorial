@@ -1,6 +1,6 @@
 
 * Overview
-  * [RM software tutorials](en/rm_software.md)
+  * [RM software tutorials](en/rm-controls.md)
   * [Hardware Specifications](en/hardware_specifications.md)
   * [Software Framework](en/software_framework.md)
 * Quick Start

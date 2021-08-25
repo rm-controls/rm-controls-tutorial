@@ -1,4 +1,4 @@
-<h1 style="text-align:center">RM-Software</h1>
+<h1 style="text-align:center">rm-controls</h1>
 RM-Software 是一套适用于RoboMaster机器人的控制解决方案及软件栈， 其最大特点是无单片机电控，有着以下优势：
 
 1. 极其简单的系统结构

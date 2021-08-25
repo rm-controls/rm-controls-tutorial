@@ -1,3 +1,3 @@
-* [中文](/rm_software)
-* [English](/en/rm_software)
+* [中文](/rm-controls)
+* [English](/en/rm-controls)
 * [RoboMaster](https://www.robomaster.com/)
