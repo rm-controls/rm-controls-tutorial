@@ -9,10 +9,10 @@
   * [代码部署](quick_start/deploy.md)
   
 * 开发指南
-  * [配置IDE](dev_guide/ide_config.md)
-  * [配置内核](dev_guide/rt_kernel.md)
   * [代码规范](dev_guide/code_style)
+  * [CLion IDE 配置](dev_guide/ide_config.md)
   
 * Digging deeper
   * [SDK](digging_deeper/sdk_docs/architecture.md)
   * [理论](digging_deeper/theory/theory_lover.md)
+  * [实时内核的编译](dev_guide/rt_kernel.md)
