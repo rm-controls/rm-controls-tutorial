@@ -96,9 +96,9 @@ Occasionally the auto formatting used by clang-format might not make sense e.g. 
 
 Use this sparingly though.
 
-### CLion IDE Configuration
-
-Check [CLion IDE Configuration]() for more details.
+> [!Tip]
+>
+> The command Line tools are troublesome? Try [CLion IDE Configuration]().
 
 
 ## clang-tidy Linting
@@ -110,8 +110,7 @@ more modern, more readable, and less prone to common bugs.
 You can install clang-tidy and other clang related tools with
 `sudo apt install clang-tidy clang-tools`
 
-Similarly to clang-format, clang-tidy uses the configuration file [``.clang-tidy``](https://github.com/ros-planning/moveit/blob/master/.clang-tidy) that is found first when traversing the source folder hierarchy upwards. All rm-controls repo provides this file on repo root file.
-
+Similarly to clang-format, clang-tidy uses the configuration file `.clang-tidy` that is found first when traversing the source folder hierarchy upwards. All rm-controls repo provides this file on repo root file.
 
 Unlike clang-format, clang-tidy needs to know the exact compiler options used to build your project.
 To provide them, configure cmake with ``-DCMAKE_EXPORT_COMPILE_COMMANDS=ON`` and cmake will create in the package's build
@@ -138,6 +137,11 @@ You can make a specific clang-tidy build with:
 catkin config --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_CLANG_TIDY=clang-tidy
 catkin build
 ```
+
+> [!Tip]
+>
+> The command Line tools are troublesome? Try [CLion IDE Configuration]().
+
 
 ### Exceptions to clang-tidy
 
