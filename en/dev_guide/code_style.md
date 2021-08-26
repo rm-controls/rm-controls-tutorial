@@ -24,7 +24,7 @@ In addition rm-controls has some extra style preferences:
 
 ## Deprecation
 
- - Deprecate functions using C++14 [``[[deprecated]]``](https://en.cppreference.com/w/cpp/language/attributes/deprecated) attribute
+ - Deprecate functions using C++14 [ ``[[deprecated]]`` ](https://en.cppreference.com/w/cpp/language/attributes/deprecated) attribute
  - Add a useful message describing how to handle the situation:
 
         [[deprecated("use bar instead")]] void foo() {}

@@ -35,7 +35,7 @@
 
 ## 弃用
 
- - 弃用函数使用 C++14 [``[[deprecated]]``](https://en.cppreference.com/w/cpp/language/attributes/deprecated) 属性
+ - 弃用函数使用 C++14 [ ``[[deprecated]]`` ](https://en.cppreference.com/w/cpp/language/attributes/deprecated) 属性
  - 添加一条有用的消息来描述如何处理这种情况：
 
         [[deprecated("use bar instead")]] void foo() {}
@@ -49,7 +49,7 @@
 
 ## pre-commit 格式检查器
 
-在我们的许多存储库中，我们有一个在 CI 中运行的 [pre-commit](https://pre-commit.com/) 检查。
+在我们的许多存储库中，有一个在 CI 中运行的 [pre-commit](https://pre-commit.com/) 检查。
 你可以在本地使用它并将其设置为在提交之前自动运行，从而避免因为格式错误而无法通过CI。
 要安装，请使用 pip：
 
@@ -97,7 +97,7 @@ clang-format 需要在 catkin 工作区的根目录下有一个配置文件，rm
 
 > [!Tip]
 >
-> 使用命令行太头疼了? 试试 [配置 CLion IDE]().
+> 使用命令行太头疼了? 试试 [CLion IDE 配置 ](./ide_config).
 
 
 ## clang-tidy Linting
