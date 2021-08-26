@@ -74,7 +74,8 @@ You can run **clang-format** in several ways. To install on Ubuntu simply run:
 
 Please note that we rely on clang-format version **10**. Sadly, newer versions are not fully backward compatible.
 
-clang-format requires a configuration file in the root of your catkin workspace. The MoveIt repo contains this file [here](https://github.com/ros-planning/moveit/blob/master/.clang-format).
+clang-format requires a configuration file in the root of your catkin workspace. All rm-controls repo provides same file on repo root file.
+.
 
 ### Command Line
 
@@ -140,7 +141,7 @@ catkin build
 
 > [!Tip]
 >
-> The command Line tools are troublesome? Try [CLion IDE Configuration]().
+> The command Line tools are troublesome? The CLion IDE has [Clang-Tidy integration](https://www.jetbrains.com/help/clion/clang-tidy-checks-support.html).
 
 
 ### Exceptions to clang-tidy
