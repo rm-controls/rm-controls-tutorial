@@ -1,8 +1,7 @@
-
 * 概述
-  * [Why rm-controls?](rm-controls.md)
-  * [硬件规格](hardware_specifications.md)
-  * [软件框架](software_framework.md)
+  * [Why rm-controls?](overview/why_rm-controls.md)
+  * [硬件规格](overview/hardware_specifications.md)
+  * [软件框架](overview/software_framework.md)
   
 * 快速入门
   * [系统安装](quick_start/installation.md)

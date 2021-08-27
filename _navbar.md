@@ -1,3 +1,3 @@
-* [中文](/rm-controls)
+* [中文](/overview/why_rm-controls.md)
 * [English](/en/rm-controls)
-* [Github](https://www.robomaster.com/)
+* [Github](https://github.com/rm-controls)
