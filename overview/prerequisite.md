@@ -20,7 +20,7 @@
 ### Transmissions
 Transmissions 是实际机器人执行器于关节的状态和指令映射，有简单减速比（改变正负可以将电机反向）、差速器（常见于机械臂末端两个关节）、双执行器（两个电机带动一个关节）。下图展示了差分 Transmissions 的简图和计算方法。
 
-![差分 transmission](/home/qiayuan/Project/rm-controls-tutorial/image/prerequisite/transmission.png) 
+![差分 transmission](../image/prerequisite/transmission.png) 
 
 下列代码为步兵机器人 URDF 中云台 pitch 轴执行器： `pitch_joint_motor` 与云台 pitch 关节 `pitch_joint` 的 [`simple_transmission`](http://docs.ros.org/en/melodic/api/transmission_interface/html/c++/classtransmission__interface_1_1SimpleTransmission.html) ，由于 pitch 轴是 6020 电机直驱，减速比为 1.0，又实际电机转向于关节定义的转向相反，取减速比为 -1.0，在校准时实测得偏移为 1.559rad。有了这一个的映射，云台控制器只使用关节状态不需要考虑不同机器人电机安装位置、方向和初始值。
 
